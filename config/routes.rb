@@ -1,10 +1,10 @@
 Blogger::Application.routes.draw do
 
-  resources :posts
-
   resources :tags
 
-  resources :users
+  resources :users do
+      resources :posts
+  end
 
 
   # The priority is based upon order of creation:
