@@ -1,10 +1,8 @@
 Blogger::Application.routes.draw do
 
-<<<<<<< HEAD
   resources :posts
-=======
+
   resources :tags
->>>>>>> 66128db60faf30850bd9fea997820600e8100f81
 
   resources :users
 
