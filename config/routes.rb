@@ -4,11 +4,11 @@ Blogger::Application.routes.draw do
   match '/users/authenticate' => 'users#authenticate'
   match '/users/logout' => 'users#logout'
 
-  resources :posts
-
   resources :tags
 
-  resources :users
+  resources :users do
+      resources :posts
+  end
 
 
   # The priority is based upon order of creation:
