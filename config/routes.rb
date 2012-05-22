@@ -1,5 +1,9 @@
 Blogger::Application.routes.draw do
 
+  match '/users/show_login' => 'users#show_login' 
+  match '/users/authenticate' => 'users#authenticate'
+  match '/users/logout' => 'users#logout'
+
   resources :posts
 
   resources :tags

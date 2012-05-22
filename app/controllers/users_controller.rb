@@ -80,4 +80,38 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def show_login
+    respond_to do |format|
+      if(session[:user_id])  
+        @user = User.find_by_id(session[:user_id])
+        format.html { redirect_to @user, notice: "Already logued." }         
+      else
+        format.html # index.html.erb
+      end
+    end
+  end
+
+  def authenticate
+    @user = User.find_by_mail_and_password(params[:mail], params[:password])    
+    respond_to do |format|
+      if (@user)
+        session[:user_id] = @user.id
+        User.find(session[:user_id])
+        format.html { redirect_to @user, notice: "User was successfully logued." }        
+      else        
+        format.html do 
+          flash[:notice] = "Fail to login #{params[:mail]}"
+          redirect_to(:controller => "login", :action => "index") 
+        end
+      end
+    end
+  end
+
+  def logout  
+    respond_to do |format|
+      reset_session
+      format.html {redirect_to(:controller => "users", :action => "show_login") }
+    end
+  end
 end
