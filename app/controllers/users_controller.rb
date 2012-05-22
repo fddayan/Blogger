@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   
-  before_filter :require_auth, :only => [:show, :index, :update]
+ before_filter :require_auth, :only => [:show, :index, :update]
 
   def require_login
     if(session[:user_id] == nil) 
@@ -67,11 +67,11 @@ class UsersController < ApplicationController
     image =  params[:user][:image]
     
     # save image
-    directory = ""
+    directory = "app/assets/images/"
     path = File.join(directory, image.original_filename)
     File.open(path, "wb") { |f| f.write(image.read) }
 
-    @user.image = '/assets'+path
+    @user.image = image.original_filename
     respond_to do |format|
       if @user.save
         format.html { redirect_to @user, notice: 'User was successfully created.' }

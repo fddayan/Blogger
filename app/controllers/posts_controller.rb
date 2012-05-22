@@ -44,10 +44,8 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(params[:post])
     @post.user_id = (params[:user_id])
-    user_id = (params[:user_id])
     @user = User.find(params[:user_id])
-    tags = params[:tag].spĺit(', ')
-=begin
+    tags = params[:tag].spĺit(", ")
     tags.each do |t|
       t.strip!
       tag = Tag.where(:label => t).first
@@ -57,7 +55,6 @@ class PostsController < ApplicationController
       end
       @post.tags << tag
     end
-=end
     respond_to do |format|
       if @post.save
         format.html { redirect_to @user, notice: 'Post was successfully created.' }
