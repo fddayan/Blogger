@@ -8,6 +8,7 @@ Blogger::Application.routes.draw do
 
   resources :users do
       resources :posts
+      get 'show_public'
   end
 
 

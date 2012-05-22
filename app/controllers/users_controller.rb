@@ -1,4 +1,27 @@
 class UsersController < ApplicationController
+  
+  before_filter :require_login, :only => [:show, :index, :new, :create, :update]
+  before_filter :require_auth, :only => [:show, :index, :new, :create, :update]
+
+  def require_login
+    if(session[:user_id] == nil) 
+      redirect_to users_show_login_path
+    end
+  end
+
+  def require_auth    
+    if(params[:user_id] == nil)
+        user_id = params[:id]
+    else
+        user_id = params[:user_id]
+    end
+
+    unless(session[:user_id].to_s == user_id) 
+      @user = User.find(user_id)      
+      redirect_to user_show_public_path @user     
+    end
+  end
+  
   # GET /users
   # GET /users.json
   def index
@@ -112,6 +135,13 @@ class UsersController < ApplicationController
     respond_to do |format|
       reset_session
       format.html {redirect_to(:controller => "users", :action => "show_login") }
+    end
+  end
+
+  def show_public
+    @user = User.find(params[:user_id])
+    respond_to do |format|
+      format.html 
     end
   end
 end
