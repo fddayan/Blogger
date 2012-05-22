@@ -26,6 +26,7 @@ class PostsController < ApplicationController
   def new
     @post = Post.new
     @user= User.find(params[:user_id])
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @post }
@@ -42,11 +43,25 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = Post.new(params[:post])
-    @user= User.find(params[:user_id])
+    @post.user_id = (params[:user_id])
+    user_id = (params[:user_id])
+    @user = User.find(params[:user_id])
+    tags = params[:tag].spĺit(', ')
+=begin
+    tags.each do |t|
+      t.strip!
+      tag = Tag.where(:label => t).first
+      if (tag == nil)
+        tag = Tag.new(:label => t)
+        tag.save
+      end
+      @post.tags << tag
+    end
+=end
     respond_to do |format|
       if @post.save
-        format.html { redirect_to [@user,@post], notice: 'Post was successfully created.' }
-        format.json { render json: [@user,@post], status: :created, location: @post }
+        format.html { redirect_to @user, notice: 'Post was successfully created.' }
+        format.json { render json: @user, status: :created, location: @post }
       else
         format.html { render action: "new" }
         format.json { render json: @post.errors, status: :unprocessable_entity }
