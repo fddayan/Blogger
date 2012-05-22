@@ -12,6 +12,7 @@
   <% end %>
 
   <% f.hidden_field :user_id, {:value => @post.user_id} %>
+    
   <div class="field">
     <%= f.label :title %><br />
     <%= f.text_field :title %>
@@ -20,6 +21,10 @@
     <%= f.label :content %><br />
     <%= f.text_field :content %>
   </div>
+
+  <%= label_tag :tag %><br />
+  <%= text_field_tag :tag %>
+
   <div class="actions">
     <%= f.submit %>
   </div>
