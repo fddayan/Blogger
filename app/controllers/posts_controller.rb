@@ -45,7 +45,7 @@ class PostsController < ApplicationController
     @post = Post.new(params[:post])
     @post.user_id = (params[:user_id])
     @user = User.find(params[:user_id])
-    tags = params[:tag].spĺit(", ")
+    tags = params[:tag].split(', ')
     tags.each do |t|
       t.strip!
       tag = Tag.where(:label => t).first

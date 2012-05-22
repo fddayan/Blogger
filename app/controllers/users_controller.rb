@@ -65,7 +65,6 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])  
     image =  params[:user][:image]
-    
     # save image
     directory = "app/assets/images/"
     path = File.join(directory, image.original_filename)
