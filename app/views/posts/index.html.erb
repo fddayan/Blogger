@@ -4,7 +4,7 @@
   <tr>
     <th>User</th>
     <th>Content</th>
-    <th></th>
+    <th>Title</th>
     <th></th>
     <th></th>
   </tr>
@@ -12,6 +12,7 @@
 <% @posts.each do |post| %>
   <tr>
     <td><%= post.user_id %></td>
+    <td><%= post.title %></td>
     <td><%= post.content %></td>
     <td><%= link_to 'Show', user_post_path(@user,post) %></td>
     <td><%= link_to 'Edit', edit_user_post_path(@user,post) %></td>
