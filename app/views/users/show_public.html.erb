@@ -1,0 +1,30 @@
+<p>
+  <b>Name:</b>
+  <%= @user.name %>
+</p>
+
+<p>
+  <b>Mail:</b>
+  <%= @user.mail %>
+</p>
+
+<p> ----------------------------------------------------------- </p> <br>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Message</th>
+    <th>Date</th>
+    <th></th>
+  </tr>
+
+<% @user.posts.each do |post| %>
+  <tr>
+    <td><%= @user.name %></td>
+    <td><%= post.title %></td>
+    <td><%= post.content %></td>
+    <td><%= link_to 'Show', user_post_path(@user,post) %></td>
+  </tr>
+<% end %>
+</table>
+
+<p> ----------------------------------------------------------- </p> <br>
