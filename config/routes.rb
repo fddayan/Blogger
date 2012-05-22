@@ -1,4 +1,5 @@
 Blogger::Application.routes.draw do
+  root :to => 'users#show_login'
 
   match '/users/show_login' => 'users#show_login' 
   match '/users/authenticate' => 'users#authenticate'
@@ -10,6 +11,7 @@ Blogger::Application.routes.draw do
       resources :posts
       get 'show_public'
   end
+  
 
 
   # The priority is based upon order of creation:
