@@ -1,5 +1,6 @@
-<p id="notice"><%= notice %></p>
-
+<h1>
+<%=@user.name%>
+'s home</h1>
 <p>
   <b>Name:</b>
   <%= @user.name %>
@@ -30,6 +31,20 @@
   <%= @user.birthdate %>
 </p>
 
-
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
+
+  <b><h2>My Posts:</h2></b>
+  <% @user.posts.each do |post| %>
+  <tr>
+    <td><%= link_to post.title, user_post_path(@user,post) %></td>
+    <td><%= link_to 'Delete', [@user,post], confirm: 'Are you sure?', method: :delete %></td><br>
+  </tr>
+  <% end %><br>
+  <%= render 'form_new_post'%>
+  <b><h2>My tags:</h2></b>
+  <% tags = Tag.my_tags(session[:user_id]).order() %>
+  <% tags.each do |t| %>
+  <%= link_to t.label, tag_path(t.id) %>
+  <% end%>
+</p>
