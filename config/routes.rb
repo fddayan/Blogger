@@ -1,4 +1,5 @@
 Blogger::Application.routes.draw do
+
   root :to => 'users#show_login'
 
   match '/users/show_login' => 'users#show_login' 
@@ -8,7 +9,9 @@ Blogger::Application.routes.draw do
   resources :tags
 
   resources :users do
-      resources :posts
+      resources :posts do
+         resources :comments
+      end
       get 'show_public'
   end
   
