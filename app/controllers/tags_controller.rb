@@ -1,4 +1,5 @@
 class TagsController < ApplicationController
+
   # GET /tags
   # GET /tags.json
   def index
@@ -80,4 +81,5 @@ class TagsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
 end
