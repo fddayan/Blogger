@@ -64,8 +64,15 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    @user = User.new(params[:user])
+    @user = User.new(params[:user])  
+    image =  params[:user][:image]
+    
+    # save image
+    directory = ""
+    path = File.join(directory, image.original_filename)
+    File.open(path, "wb") { |f| f.write(image.read) }
 
+    @user.image = '/assets'+path
     respond_to do |format|
       if @user.save
         format.html { redirect_to @user, notice: 'User was successfully created.' }
