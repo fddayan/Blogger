@@ -1,0 +1,16 @@
+<h1>Login</h1>
+<%= form_tag("/users/authenticate", :method => "get") do%>
+  <div class="field">
+    <%= label_tag(:mail, "E-Mail:") %>
+    <%= text_field_tag(:mail) %>  
+  </div>
+  <div class="field">
+   <%= label_tag(:password, "Password:") %>
+    <%= password_field_tag(:password) %>
+  </div>
+  <div class="actions">
+    <%= submit_tag("Login") %>
+    <%= link_to 'New User', new_user_path %>
+  </div>
+  <p id="notice"><%= flash[:notice] %></p>
+<% end %>
