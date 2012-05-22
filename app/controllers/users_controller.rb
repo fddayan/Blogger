@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   
-  before_filter :require_login, :only => [:index, :update]
   before_filter :require_auth, :only => [:show, :index, :update]
 
   def require_login
