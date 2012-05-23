@@ -4,7 +4,7 @@
 <h1>Search Posts</h1>
 
 <div class="search">
-	<%= form_tag "search_by_fields", :remote=>true do%>
+	<%= form_tag "search_by_fields", :remote=>true, :id=>"form_search" do%>
 	 	<div class="column">
 	  	<%= label_tag :tag %><br />
 	  	<%= text_field_tag :name %>
