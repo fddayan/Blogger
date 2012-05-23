@@ -14,7 +14,57 @@
   <b>Content:</b>
   <%= @post.content %>
 </p>
-
-
 <%= link_to 'Edit', edit_user_post_path(@user,@post) %> |
 <%= link_to 'Back', user_posts_path {(@user)} %>
+<p>----------------------------Nuevo Comentario-----------------------------</p>
+<p>------------------------------------------------------------------------------------</p>
+<%= form_for([@user,@post,@comment]) do |f| %>
+  <% if @comment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+
+      <ul>
+      <% @comment.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= f.label :post_id %><br />
+    <%= f.text_field :post_id %>
+  </div>
+  <div class="field">
+    <%= f.label :user_id %><br />
+    <%= f.text_field :user_id %>
+  </div>
+  <div class="field">
+    <%= f.label :content %><br />
+    <%= f.text_field :content %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+<p>--------------------------------Comentarios----------------------------------</p>
+<p>------------------------------------------------------------------------------------</p>
+<table>
+  <tr>
+    <th>User</th>
+    <th>Content</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @post.comments.each do |comment| %>
+  <tr>
+    <td><%= comment.user_id %></td>
+    <td><%= comment.content %></td>
+    <td><%= link_to 'Show', user_post_comment_path(@user,@post,comment)%></td>
+    <td><%= link_to 'Edit', edit_user_post_comment_path(@user, @post, comment) %></td>
+    <td><%= link_to 'Destroy', [@user,@post,comment], confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+

@@ -13,6 +13,7 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
+    @comment = Comment.new
     @post = Post.find(params[:id])
     @user= User.find(params[:user_id])
     respond_to do |format|
