@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   attr_accessible :birthdate, :image, :lastname, :mail, :name, :password, :password_confirmation
-
   has_many :posts
+  has_many :comments
 
   validates_presence_of :lastname, :name
 
