@@ -48,6 +48,8 @@ class CommentsController < ApplicationController
     @comment = Comment.new(params[:comment])
     @post = Post.find(params[:post_id])
     @user= User.find(params[:user_id])
+    @comment.user_id = @user.id
+    @comment.post_id = @post.id
     respond_to do |format|
       if @comment.save
         format.html { redirect_to [@user,@post], notice: 'Comment was successfully created.' }
