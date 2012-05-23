@@ -19,7 +19,6 @@ Blogger::Application.routes.draw do
   match '/search/index' => 'search#index' 
   match '/search/search_by_fields' => 'search#search_by_fields'
 
-
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

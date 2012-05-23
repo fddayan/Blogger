@@ -12,10 +12,11 @@ class SearchController < ActionController::Base
   	keyword = params[:keyword]
 
   	#@posts = Post.joins(:tags).where(:tags=>{:label=> tag} ).uniq
-  	@msg1 = "Buenos Dias!" 	
+   
+    @msg1 = "prueba"
     respond_to do |format|
       format.js
     end
-  end
 
+  end
 end

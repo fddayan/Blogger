@@ -1,10 +1,10 @@
 <title> Search Posts </title>
-<%= stylesheet_link_tag    "search", :media => "all" %>
+<%= stylesheet_link_tag "search", :media => "all" %>
 
 <h1>Search Posts</h1>
 
 <div class="search">
-	<%= form_tag :action=>"search_by_fields", :remote=>true do%>
+	<%= form_tag "search_by_fields", :remote=>true do%>
 	 	<div class="column">
 	  	<%= label_tag :tag %><br />
 	  	<%= text_field_tag :name %>
@@ -22,9 +22,7 @@
 	<% end %>
 </div>
 
-<div id="div_posts">  
-	<%= @msg1 %>
-</div>
+<div id="div_posts"> </div>
 
 	<table>
 	  <tr>
