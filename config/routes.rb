@@ -11,7 +11,10 @@ Blogger::Application.routes.draw do
       resources :posts
       get 'show_public'
   end
-  
+
+  #resources :search 
+  match '/search/index' => 'search#index' 
+  match '/search/search_by_fields' => 'search#search_by_fields'
 
 
   # The priority is based upon order of creation:

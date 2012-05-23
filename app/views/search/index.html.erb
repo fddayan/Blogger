@@ -1,0 +1,45 @@
+<title> Search Posts </title>
+<%= stylesheet_link_tag    "search", :media => "all" %>
+
+<h1>Search Posts</h1>
+
+<div class="search">
+	<%= form_tag :action=>"search_by_fields", :remote=>true do%>
+	 	<div class="column">
+	  	<%= label_tag :tag %><br />
+	  	<%= text_field_tag :name %>
+	 	</div>
+	 	<div class="column">
+	  	<%= label_tag :post_date %><br />
+	  	<%= text_field_tag :post_date %>
+	 	</div>
+	 	<div class="column">
+	 		<%= label_tag :keyword %><br />
+	  	<%= text_field_tag :keyword %>
+	 	</div>
+	 	<%= submit_tag("Search") %>
+		<p id="notice"><%= flash[:notice] %></p>
+	<% end %>
+</div>
+
+<div id="div_posts">  
+	<%= @msg1 %>
+</div>
+
+	<table>
+	  <tr>
+	    <th>User</th>
+	    <th>Content</th>
+	    <th>Title</th>
+	  </tr>
+
+	<% if (@posts) %>
+		<% @posts.each do |post| %>
+	  	<tr>
+	    	<td><%= post.user_id %></td>
+	    	<td><%= post.title %></td>
+	    	<td><%= post.content %></td>
+	  	</tr>
+		<% end %>
+	<%end%>
+	</table>

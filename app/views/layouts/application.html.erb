@@ -4,7 +4,16 @@
   <title>Blogger</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
+  <%=javascript_include_tag :defaults %>
   <%= csrf_meta_tags %>  
+
+
+  <% if (session[:user_id] == nil) %>
+  	<%= link_to 'Search', search_index_path %></td>	
+  <%else%>
+  	<%= link_to 'Logout', users_logout_path %></td>
+  <%end%>
+
 </head>
 <body>
 
