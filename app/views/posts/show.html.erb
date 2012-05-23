@@ -31,14 +31,6 @@
     </div>
   <% end %>
   <div class="field">
-    <%= f.label :post_id %><br />
-    <%= f.text_field :post_id %>
-  </div>
-  <div class="field">
-    <%= f.label :user_id %><br />
-    <%= f.text_field :user_id %>
-  </div>
-  <div class="field">
     <%= f.label :content %><br />
     <%= f.text_field :content %>
   </div>
@@ -57,7 +49,7 @@
     <th></th>
   </tr>
 
-<% @post.comments.each do |comment| %>
+<% @post.comments.reverse.each do |comment| %>
   <tr>
     <td><%= comment.user_id %></td>
     <td><%= comment.content %></td>

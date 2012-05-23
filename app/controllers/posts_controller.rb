@@ -16,6 +16,8 @@ class PostsController < ApplicationController
     @comment = Comment.new
     @post = Post.find(params[:id])
     @user= User.find(params[:user_id])
+    puts @post.id.class
+    puts @post.user_id.class
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @post }
