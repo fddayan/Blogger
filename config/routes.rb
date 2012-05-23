@@ -17,7 +17,7 @@ Blogger::Application.routes.draw do
 
   #resources :search 
   match '/search/index' => 'search#index' 
-  match '/search/search_by_fields' => 'search#search_by_fields'
+  match '/search/search_by_fields' => 'search#search_by_fields', :via=>:post
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

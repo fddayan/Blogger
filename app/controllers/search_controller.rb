@@ -2,7 +2,7 @@ class SearchController < ActionController::Base
   
   def index
     respond_to do |format|
-      format.html # index.html.erb
+      format.html { render :layout=> "application" }# index.html.erb
     end
   end
 
