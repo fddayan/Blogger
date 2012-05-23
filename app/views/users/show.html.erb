@@ -1,50 +1,68 @@
 <h1>
 <%=@user.name%>
 's home</h1>
-<p>
-  <b>Name:</b>
-  <%= @user.name %>
-</p>
-
-<p>
-  <b>Lastname:</b>
-  <%= @user.lastname %>
-</p>
-
-<p>
-  <b>Mail:</b>
-  <%= @user.mail %>
-</p>
-
-<p>
-  <b>Password:</b>
-  <%= @user.password %>
-</p>
-
-<p>
-  <b>Image:</b>
-  <%= image_tag(@user.image) %>
-</p>
-
-<p>
-  <b>Birthdate:</b>
-  <%= @user.birthdate %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
-
-  <b><h2>My Posts:</h2></b>
-  <% @user.posts.each do |post| %>
+<%= image_tag(@user.image) %>
+<table>
   <tr>
-    <td><%= link_to post.title, user_post_path(@user,post) %></td>
-    <td><%= link_to 'Delete', [@user,post], confirm: 'Are you sure?', method: :delete %></td><br>
+    <td>
+      <p>
+      <b>Name:</b>
+      <%= @user.name %>
+      </p>
+    </td>
+    <td>
+      <p>
+      <b>Lastname:</b>
+      <%= @user.lastname %>
+      </p>
+    </td>
+    <td>
+      <p>
+      <b>Mail:</b>
+      <%= @user.mail %>
+      </p>
+    </td>
+    <td>
+      <p>
+      <b>Birthdate:</b>
+      <%= @user.birthdate %>
+      </p>
+    </td>
   </tr>
-  <% end %><br>
+</table>
+
+
+<%= link_to 'Edit', edit_user_path(@user) %>
+<br>
+
+<table>
+<tr>  
+  <td>
+  <h2>My Posts:</h2>
+  </td>
+  <td>
+  <h2>My tags:</h2>
+  </td>
+</tr>
+<tr>
+  <td>
+    <% @user.posts.reverse.each do |post| %>
+      <%= link_to post.title, user_post_path(@user,post) %>
+      <h6>Created time : <%= post.created_at %>
+      <%= link_to 'Delete', [@user,post], confirm: 'Are you sure?', method: :delete %></h6>
+      <%= post.content %>
+      <br><br>
+    <% end %>
+  </td>
+  <td valign="top">
+    <% tags = Tag.my_tags(session[:user_id]).order() %>
+    <% tags.uniq.each do |t| %>
+      <%= link_to t.label, tag_path(t.id) %>
+    <% end%>
+
+  </td>
+</tr>
+</table>
+<h3>Create a new post:</h3>
   <%= render 'form_new_post'%>
-  <b><h2>My tags:</h2></b>
-  <% tags = Tag.my_tags(session[:user_id]).order() %>
-  <% tags.each do |t| %>
-  <%= link_to t.label, tag_path(t.id) %>
-  <% end%>
-</p>
+  
