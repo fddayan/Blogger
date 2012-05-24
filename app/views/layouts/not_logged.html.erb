@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Blogger</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%=javascript_include_tag :defaults %>
+  <%= csrf_meta_tags %>  
+</head>
+<body>
+  
+  <div class = "content">
+    <div class = "header">
+      <% unless (session[:user_id] == nil) %>
+        <div class ="link"><%= link_to 'Logout', users_logout_path %></td></div>
+      <%end%>
+      <div class ="link"><%= link_to 'Search', search_index_path %></td> </div>
+    </div>
+    <div class = "info">
+    <%= yield %>
+    </div>
+    <div class = "sidebar">
+
+    </div>
+    <div class = "footer">
+      footer!!!
+    </div>
+  </div>
+</body>
+</html>
