@@ -4,10 +4,10 @@
 <h1>Search Posts</h1>
 
 <div class="search">
-	<%= form_tag "search_by_fields", :remote=>true, :id=>"form_search" do%>
+	<%= form_tag "search_by_fields", :remote=>true do%>
 	 	<div class="column">
 	  	<%= label_tag :tag %><br />
-	  	<%= text_field_tag :name %>
+	  	<%= text_field_tag :tag %>
 	 	</div>
 	 	<div class="column">
 	  	<%= label_tag :post_date %><br />
@@ -22,22 +22,12 @@
 	<% end %>
 </div>
 
-<div id="div_posts"> </div>
-
 	<table>
-	  <tr>
+	  <thead>
 	    <th>User</th>
 	    <th>Content</th>
 	    <th>Title</th>
-	  </tr>
-
-	<% if (@posts) %>
-		<% @posts.each do |post| %>
-	  	<tr>
-	    	<td><%= post.user_id %></td>
-	    	<td><%= post.title %></td>
-	    	<td><%= post.content %></td>
-	  	</tr>
-		<% end %>
-	<%end%>
+	  </thead>
+		<tbody id="div_posts">
+		</tbody>
 	</table>

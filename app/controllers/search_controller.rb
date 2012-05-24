@@ -12,15 +12,13 @@ class SearchController < ActionController::Base
   	keyword = params[:keyword]
 
   	#post by tags
-    #@posts = Post.joins(:tags).where(:tags=>{:label=> tag} ).uniq
+    @posts = Post.joins(:tags).where(:tags=>{:label=> tag} ).uniq
     #post by date posted
     #@posts = Post.where(:created_at=> post_date).uniq
     #post by keyword
     #@posts = Post.find(:condition=> [content LIKE ?', keyword+'%']).uniq
-
-    @msg1 = "prueba"
+    #@msg1 = "prueba"
     respond_to do |format|
-      #format.html { render :action => "index" }  
       format.js
     end
 
