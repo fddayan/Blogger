@@ -12,12 +12,22 @@ class SearchController < ActionController::Base
   	keyword = params[:keyword]
 
   	#post by tags
-    @posts = Post.joins(:tags).where(:tags=>{:label=> tag} ).uniq
+    if(tag != "")
+      @posts = Post.joins(:tags).where(:tags=>{:label=> tag} ).uniq
+    end
+    
     #post by date posted
-    #@posts = Post.where(:created_at=> post_date).uniq
+    if(post_date != "")    
+      @posts = Post.find(:all, :conditions=>['created_at LIKE ?', post_date+'%']).uniq
+    end
+    
     #post by keyword
-    #@posts = Post.find(:condition=> [content LIKE ?', keyword+'%']).uniq
-    #@msg1 = "prueba"
+    if(keyword != "")
+      @posts = Post.find(:all, :conditions=>['content LIKE ?', keyword+'%']).uniq
+    end
+
+    @count = @posts.count;
+
     respond_to do |format|
       format.js
     end
