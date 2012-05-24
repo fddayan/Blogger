@@ -46,16 +46,30 @@
     <th>Content</th>
     <th></th>
     <th></th>
-    <th></th>
   </tr>
 
 <% @post.comments.reverse.each do |comment| %>
   <tr>
     <td><%= comment.user_id %></td>
     <td><%= comment.content %></td>
-    <td><%= link_to 'Show', user_post_comment_path(@user,@post,comment)%></td>
-    <td><%= link_to 'Edit', edit_user_post_comment_path(@user, @post, comment) %></td>
-    <td><%= link_to 'Destroy', [@user,@post,comment], confirm: 'Are you sure?', method: :delete %></td>
+    <td>
+        <%= 
+        if(session[:user_id]==comment.user_id) 
+              link_to 'Edit', edit_user_post_comment_path(@user, @post, comment) 
+        end
+        %>
+    </td>
+    <td>
+      <%= 
+      if(session[:user_id]==comment.user_id)
+        link_to 'Destroy', [@user,@post,comment], confirm: 'Are you sure?', method: :delete
+      else
+        if (session[:user_id]==comment.post_id)
+          link_to 'Destroy', [@user,@post,comment], confirm: 'Are you sure?', method: :delete
+        end
+      end
+      %>
+    </td>
   </tr>
 <% end %>
 </table>
