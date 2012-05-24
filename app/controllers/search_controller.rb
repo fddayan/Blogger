@@ -7,17 +7,9 @@ class SearchController < ActionController::Base
   end
 
   def search_by_fields
-  	tag = params[:tag]
-  	post_date = params[:post_date]
-  	keyword = params[:keyword]
+    @posts = Post.by_tag(params[:tag]).by_keyword(params[:keyword]).by_created(params[:post_date]);
+    @count = @posts.count;
 
-  	#post by tags
-    @posts = Post.joins(:tags).where(:tags=>{:label=> tag} ).uniq
-    #post by date posted
-    #@posts = Post.where(:created_at=> post_date).uniq
-    #post by keyword
-    #@posts = Post.find(:condition=> [content LIKE ?', keyword+'%']).uniq
-    #@msg1 = "prueba"
     respond_to do |format|
       format.js
     end
