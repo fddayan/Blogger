@@ -13,6 +13,8 @@
     <div class = "header">
       <% unless (session[:user_id] == nil) %>
         <div class ="link"><%= link_to 'Logout', users_logout_path %></td></div>
+      <% else %>
+        <div class ="link"><%= link_to 'Login', users_show_login_path %></td></div>
       <%end%>
       <div class ="link"><%= link_to 'Search', search_index_path %></td> </div>
     </div>
