@@ -20,13 +20,15 @@
     <%= yield %>
     </div>
     <div class = "sidebar">
-      <div class="link"><%= link_to 'Edit my account', edit_user_path(@user) %></div>
-      <%= link_to image_tag(@user.image), user_path(@user)%>
-      <h1 class = "inside_title">My tags:</h1>
-      <% tags = Tag.my_tags(session[:user_id]).order() %>
-      <% tags.uniq.each do |t| %>
-        <%= link_to t.label, tag_path(t.id) %>
-      <% end%>
+      <% unless (session[:user_id] == nil) %>
+        <div class="link"><%= link_to 'Edit my account', edit_user_path(@user) %></div>
+        <%= link_to image_tag(@user.image), user_path(@user)%>
+        <h1 class = "inside_title">My tags:</h1>
+        <% tags = Tag.my_tags(session[:user_id]).order() %>
+        <% tags.uniq.each do |t| %>
+          <%= link_to t.label, tag_path(t.id) %>
+        <% end%>
+      <%end%>
     </div>
     <div class = "footer">
       footer!!!
