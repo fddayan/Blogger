@@ -1,3 +1,34 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+div.field{
+	margin: 0;
+
+}
+div.field input{
+	font-size: 10px;
+	float: left;
+}
+div.field label{
+	float: left;
+	font-size: 10px;
+	width: 100px;
+	clear: left;
+	text-align: right;
+}
+div.actions input{
+	clear: left;
+	float: left;
+	margin-bottom: 10px;
+    margin-left: 100px;
+    margin-top: 10px;
+	background-color: black;
+	color: white;
+}
+div.actions a{
+	float: left;
+	margin-left: 10px;
+    margin-top: 14px;
+}
+

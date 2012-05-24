@@ -117,7 +117,7 @@ class UsersController < ApplicationController
         @user = User.find_by_id(session[:user_id])
         format.html { redirect_to @user, notice: "Already logued." }         
       else
-        format.html # index.html.erb
+        format.html { render :layout=> "not_logged" }# index.html.erb
       end
     end
   end

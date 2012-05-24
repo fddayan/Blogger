@@ -1,38 +1,7 @@
-<h1>
+<h1 class="inside_title">
 <%=@user.name%>
 's home</h1>
-<%= image_tag(@user.image) %>
-<table>
-  <tr>
-    <td>
-      <p>
-      <b>Name:</b>
-      <%= @user.name %>
-      </p>
-    </td>
-    <td>
-      <p>
-      <b>Lastname:</b>
-      <%= @user.lastname %>
-      </p>
-    </td>
-    <td>
-      <p>
-      <b>Mail:</b>
-      <%= @user.mail %>
-      </p>
-    </td>
-    <td>
-      <p>
-      <b>Birthdate:</b>
-      <%= @user.birthdate %>
-      </p>
-    </td>
-  </tr>
-</table>
 
-
-<%= link_to 'Edit', edit_user_path(@user) %>
 <br>
 
 <table>
@@ -40,9 +9,7 @@
   <td>
   <h2>My Posts:</h2>
   </td>
-  <td>
-  <h2>My tags:</h2>
-  </td>
+
 </tr>
 <tr>
   <td>
@@ -55,14 +22,11 @@
     <% end %>
   </td>
   <td valign="top">
-    <% tags = Tag.my_tags(session[:user_id]).order() %>
-    <% tags.uniq.each do |t| %>
-      <%= link_to t.label, tag_path(t.id) %>
-    <% end%>
+
 
   </td>
 </tr>
 </table>
-<h3>Create a new post:</h3>
+<h1 class="inside_title">Create a new post:</h1></br>
   <%= render 'form_new_post'%>
   

@@ -14,19 +14,14 @@
   <% f.hidden_field :user_id, {:value => @post.user_id} %>
     
   <div class="field">
-    <%= f.label :title %><br />
+    <%= f.label :title %>
     <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :content %><br />
+    <%= f.label :content %>
     <%= f.text_field :content %>
+    <%= label_tag :tag %>
+    <%= text_field_tag :tag %>
   </div>
-
-  <%= label_tag :tag %><br />
-  <%= text_field_tag :tag %>
-
   <div class="actions">
-  	<br>
     <%= f.submit %>
   </div>
 <% end %>

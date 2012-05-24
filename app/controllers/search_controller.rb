@@ -2,7 +2,7 @@ class SearchController < ActionController::Base
   
   def index
     respond_to do |format|
-      format.html { render :layout=> "application" }# index.html.erb
+        format.html { render :layout=> "not_logged" }# index.html.erb
     end
   end
 
