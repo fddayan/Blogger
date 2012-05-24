@@ -1,10 +1,19 @@
 require 'test_helper'
 
 class PostsControllerTest < ActionController::TestCase
-  test "authenticate with crate post" do
-    @post = Post.create :user_id=>"1",:title=>"Titulo",:content=>"Contenido",:tag=>"tag12, tag22"
+  test " create post" do
+    @user = User.create :mail=>"federico.dayan@globant.com",:password=>"pass123", :name=>"fede",:lastname=>"dayan" 
+    post :create,:user_id=>@user.id,:title=>"Titulo",:content=>"Contenido",:tag=>"tag12, tag22"
     assert_response 302
-    assert_redirected_to "/users/#{@user.id}/show"
+    assert_redirected_to "/users/#{@user.id}"
+  end
+
+  test "delet post" do
+    @user = User.create :mail=>"federico.dayan@globant.com",:password=>"pass123", :name=>"fede",:lastname=>"dayan" 
+    @post = Post.create :user_id=>@user.id,:title=>"Titulo",:content=>"Contenido",:tag=>"tag12, tag22"
+    delete :destroy, :id =>@post.id, :user_id=>@user.id
+    assert_response 302
+    assert_redirected_to "/users/#{@user.id}/posts"
   end
   # setup do
   #   @post = posts(:one)
