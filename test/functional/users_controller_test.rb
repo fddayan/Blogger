@@ -16,6 +16,8 @@ class UsersControllerTest < ActionController::TestCase
      assert_response 302
      assert_redirected_to "/users/#{@user.id}"
    end
+   
+   
   # setup do
   #   @user = users(:one)
   # end
