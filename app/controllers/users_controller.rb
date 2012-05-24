@@ -132,7 +132,7 @@ class UsersController < ApplicationController
       else        
         format.html do 
           flash[:notice] = "Fail to login #{params[:mail]}"
-          redirect_to(:controller => "login", :action => "index") 
+          redirect_to(:controller => "users", :action => "show_login")
         end
       end
     end
