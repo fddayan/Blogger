@@ -14,6 +14,9 @@
       <% unless (session[:user_id] == nil) %>
         <div class ="link"><%= link_to 'Logout', users_logout_path %></td></div>
       <%end%>
+      <% if (session[:user_id] == nil) %>
+        <div class ="link"><%= link_to 'Login', users_login_path %></td></div>
+      <%end%>
       <div class ="link"><%= link_to 'Search', search_index_path %></td> </div>
     </div>
     <div class = "info">
