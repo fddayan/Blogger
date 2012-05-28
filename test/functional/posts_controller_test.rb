@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class PostsControllerTest < ActionController::TestCase
-  
   test " create post" do
     @user = User.create :mail=>"federico.dayan@globant.com",:password=>"pass123", :name=>"fede",:lastname=>"dayan" 
     post :create,:user_id=>@user.id,:title=>"Titulo",:content=>"Contenido",:tag=>"tag12, tag22"
@@ -9,15 +8,13 @@ class PostsControllerTest < ActionController::TestCase
     assert_redirected_to "/users/#{@user.id}"
   end
 
-<<<<<<< HEAD
-  test "delete post" do
+  test "delet post" do
     @user = User.create :mail=>"federico.dayan@globant.com",:password=>"pass123", :name=>"fede",:lastname=>"dayan" 
     @tag = Tag.create :label=>"tag1"
-=======
-  test "delet post" do
-    @user = User.create :mail=>"federico.dayan@globant.com",:password=>"pass123", :name=>"fede",:lastname=>"dayan"
->>>>>>> c6581cc99c01c5b4e07ddfcd801158118515f1d4
-    @post = Post.create :content=>"Contenido",:title=>"Titulo",:user_id=>@user.id
+    @post = Post.create :content=>"Contenido",:title=>"Titulo",:user_id=>@user.id, :tags => [@tag]
+    #puts ">>>>>>>>>>>>>>>>Post>>>>>>>>>>>>>>>",@post.id
+    #puts ">>>>>>>>>>>>>>>>Tag>>>>>>>>>>>>>>>",@tag.id
+    #puts ">>>>>>>>>>>>>>>>User>>>>>>>>>>>>>>",@user.id
     delete :destroy, :user_id=>@user.id, :id =>@post.id
     assert_response 302
     assert_redirected_to "/users/#{@post.user_id}/posts"
