@@ -11,7 +11,7 @@ class PostsControllerTest < ActionController::TestCase
   test "delet post" do
     @user = User.create :mail=>"federico.dayan@globant.com",:password=>"pass123", :name=>"fede",:lastname=>"dayan" 
     @tag = Tag.create :label=>"tag1"
-    @post = Post.create :content=>"Contenido",:title=>"Titulo",:user_id=>@user.id
+    @post = Post.create :content=>"Contenido",:title=>"Titulo",:user_id=>@user.id, :tags => [@tag]
     #puts ">>>>>>>>>>>>>>>>Post>>>>>>>>>>>>>>>",@post.id
     #puts ">>>>>>>>>>>>>>>>Tag>>>>>>>>>>>>>>>",@tag.id
     #puts ">>>>>>>>>>>>>>>>User>>>>>>>>>>>>>>",@user.id
