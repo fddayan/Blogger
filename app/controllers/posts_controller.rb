@@ -85,8 +85,8 @@ class PostsController < ApplicationController
     end
   end
 
-  # DELETE /posts/1
-  # DELETE /posts/1.json
+  # DELETE users/{id}/posts/1
+  # DELETE users/{id}/posts/1.json
   def destroy
     @post = Post.find(params[:id])
     @user= User.find(params[:user_id])
