@@ -21,6 +21,10 @@
     <%= f.label :content %><br />
     <%= f.text_field :content %>
   </div>
+  <div class="field">
+    <%= label_tag :tag %>
+    <%= text_field_tag :tag, :value=> @post.tags[1].label%>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>
