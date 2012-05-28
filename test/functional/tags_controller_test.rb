@@ -1,8 +1,25 @@
 require 'test_helper'
 
 class TagsControllerTest < ActionController::TestCase
-  test "true" do
+  test "create tag" do
+    @tag = Tag.create :label=>"tagTest" 
+    assert_response :success
   end
+
+  test "createController tag" do
+    post :create,:label=>"tagTest2" 
+    assert_response 302
+  end
+
+  test "get tag" do
+    @user = User.create :mail=>"federico.dayan@globant.com",:password=>"pass123", :name=>"fede",:lastname=>"dayan"
+    #se setea la session con el id del usuario creado
+    session[:user_id] = @user.id
+    @tag = Tag.create :label=>"tagTest" 
+    get :show, :id =>@tag.id
+    assert_response :success
+  end
+
   # setup do
   #   @tag = tags(:one)
   # end

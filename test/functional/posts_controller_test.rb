@@ -22,7 +22,8 @@ class PostsControllerTest < ActionController::TestCase
 
   test "get post" do
     @user = User.create :mail=>"federico.dayan@globant.com",:password=>"pass123", :name=>"fede",:lastname=>"dayan"
-    @post = Post.create :content=>"Contenido",:title=>"Titulo",:user_id=>@user.id
+    @tag = Tag.create :label=>"tag1"
+    @post = Post.create :content=>"Contenido",:title=>"Titulo",:user_id=>@user.id, :tags => [@tag]
     get :show, :user_id=>@user.id, :id =>@post.id
     assert_response :success
   end
