@@ -7,7 +7,8 @@ class User < ActiveRecord::Base
 
 	validates :mail, :presence => true
  	validates_format_of :mail, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :on => :create
+ 	validates_uniqueness_of :mail
  	validates :password, :presence => true, :length => {:within => 6..40}
  	validates_confirmation_of :password
- 
+
 end

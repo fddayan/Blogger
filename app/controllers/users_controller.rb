@@ -66,12 +66,16 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])  
     image =  params[:user][:image]
-    # save image
-    directory = "app/assets/images/"
-    path = File.join(directory, image.original_filename)
-    File.open(path, "wb") { |f| f.write(image.read) }
+    
+    if(image)
+      # save image
+      directory = "app/assets/images/"
+      path = File.join(directory, image.original_filename)
+      File.open(path, "wb") { |f| f.write(image.read) }
 
-    @user.image = image.original_filename
+      @user.image = image.original_filename
+    end
+    
     respond_to do |format|
       if @user.save
         format.html { redirect_to @user, notice: 'User was successfully created.' }
