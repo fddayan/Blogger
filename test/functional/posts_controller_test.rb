@@ -10,7 +10,7 @@ class PostsControllerTest < ActionController::TestCase
 
   test "delet post" do
     @user = User.create :mail=>"federico.dayan@globant.com",:password=>"pass123", :name=>"fede",:lastname=>"dayan" 
-    @post = Post.create :user_id=>@user.id,:title=>"Titulo",:content=>"Contenido",:tag=>"tag12, tag22"
+    @post = Post.create :user_id=>@user.id,:title=>"Titulo",:content=>"Contenido", :tag=>"tag12, tag22"
     delete :destroy, :id =>@post.id, :user_id=>@user.id
     assert_response 302
     assert_redirected_to "/users/#{@user.id}/posts"
