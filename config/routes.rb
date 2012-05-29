@@ -1,6 +1,6 @@
 Blogger::Application.routes.draw do
 
-  devise_for :users
+  devise_for :users, :controllers => {:registrations => "registrations"}
 
   root :to => 'users#show_login'
 
@@ -20,7 +20,7 @@ Blogger::Application.routes.draw do
   #resources :search 
   match '/search/index' => 'search#index' 
   match '/search/search_by_fields' => 'search#search_by_fields', :via=>:post
-  match after_sign_in_path_for(user) => user_path user, :via=>:post
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
