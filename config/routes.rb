@@ -1,5 +1,7 @@
 Blogger::Application.routes.draw do
 
+  devise_for :users
+
   root :to => 'users#show_login'
 
   match '/users/show_login' => 'users#show_login' 

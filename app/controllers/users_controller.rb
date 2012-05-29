@@ -48,7 +48,7 @@ class UsersController < ApplicationController
   # GET /users/new
   # GET /users/new.json
   def new
-    @user = User.new
+    #user = User.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -64,7 +64,9 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
+    puts ">>>>>>>>>>>>> REGISTRATION>>>>>>>>>>>" 
     @user = User.new(params[:user])  
+    puts ">>>>>>>>>>>>>" , @user.email
     image =  params[:user][:image]
     
     if(image)
@@ -121,13 +123,14 @@ class UsersController < ApplicationController
         @user = User.find_by_id(session[:user_id])
         format.html { redirect_to @user, notice: "Already logued." }         
       else
-        format.html { render :layout=> "not_logged" }# index.html.erb
+        #format.html { render :layout=> "not_logged" }# index.html.erb
+        format.html { redirect_to new_user_session_path}                 
       end
     end
   end
 
   def authenticate
-    @user = User.find_by_mail_and_password(params[:mail], params[:password])    
+    @user = User.find_by_email_and_password(params[:email], params[:password])    
     respond_to do |format|
       if (@user)
         session[:user_id] = @user.id
@@ -135,7 +138,7 @@ class UsersController < ApplicationController
         format.html { redirect_to @user, notice: "User was successfully logued." }        
       else        
         format.html do 
-          flash[:notice] = "Fail to login #{params[:mail]}"
+          flash[:notice] = "Fail to login #{params[:email]}"
           redirect_to(:controller => "users", :action => "show_login")
         end
       end
