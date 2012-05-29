@@ -11,7 +11,7 @@
   
   <div class = "content">
     <div class = "header">
-      <% unless (session[:user_id] == nil) %>
+      <% if (user_signed_in?) %>
         <div class ="link"><%= link_to 'Logout', users_logout_path %></td></div>
       <% else %>
         <div class ="link"><%= link_to 'Login', users_show_login_path %></td></div>
@@ -22,7 +22,15 @@
     <%= yield %>
     </div>
     <div class = "sidebar">
-
+      <% if (user_signed_in?) %>
+        <div class="link"><%= link_to 'Edit my account', edit_user_path(current_user) %></div>
+        <%= link_to image_tag(current_user.image), user_path(current_user)%>
+        <h1 class = "inside_title">My tags:</h1>
+        <% tags = Tag.my_tags(current_user.id).order() %>
+        <% tags.uniq.each do |t| %>
+          <%= link_to t.label, tag_path(t.id) %>
+        <% end%>
+      <%end%>
 
     </div>
     <div class = "footer">
