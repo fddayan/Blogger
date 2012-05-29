@@ -23,7 +23,7 @@
   </div>
   <div class="field">
     <%= label_tag :tag %>
-    <%= text_field_tag :tag, :value=> @post.tags[1].label%>
+    <%= text_field_tag :tag, @post.get_string_tags %>
   </div>
   <div class="actions">
     <%= f.submit %>

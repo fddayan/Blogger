@@ -63,11 +63,24 @@ class PostsController < ApplicationController
     end
   end
 
+
+
   # PUT /posts/1
   # PUT /posts/1.json
   def update
     @post = Post.find(params[:id])
     @user= User.find(params[:user_id])
+    @post.user_id = (params[:user_id])
+    tags = params[:tag].split(', ')
+    @post.tags.clear
+    tags.each do |t|
+      tag = Tag.where(:label => t).first
+      if (tag == nil)
+        tag = Tag.new(:label => t)
+        tag.save
+      end
+      @post.tags << tag
+    end
     respond_to do |format|
       if @post.update_attributes(params[:post])
         format.html { redirect_to [@user,@post], notice: 'Post was successfully updated.' }
@@ -78,7 +91,6 @@ class PostsController < ApplicationController
       end
     end
   end
-
   # DELETE users/{id}/posts/1
   # DELETE users/{id}/posts/1.json
   def destroy
@@ -92,3 +104,4 @@ class PostsController < ApplicationController
     end
   end
 end
+    

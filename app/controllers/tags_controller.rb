@@ -15,7 +15,7 @@ class TagsController < ApplicationController
   # GET /tags/1.json
   def show
     @tag = Tag.find(params[:id])
-    @user= User.find(session[:user_id])
+    @user= User.find(current_user.id)
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @tag }

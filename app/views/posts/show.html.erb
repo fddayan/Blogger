@@ -14,8 +14,8 @@
   <b>Content:</b>
   <%= @post.content %>
 </p>
-<%= link_to 'Edit', edit_user_post_path(@user,@post) %> |
-<%= link_to 'Back', user_posts_path {(@user)} %>
+<%= link_to 'Edit', edit_user_post_path(current_user.id,@post) %> |
+<%= link_to 'Back', user_path(current_user) %>
 <p>----------------------------Nuevo Comentario-----------------------------</p>
 <p>------------------------------------------------------------------------------------</p>
 <%= form_for([@user,@post,@comment]) do |f| %>
@@ -54,17 +54,17 @@
     <td><%= comment.content %></td>
     <td>
         <%= 
-        if(session[:user_id]==comment.user_id) 
+        if(current_user.id==comment.user_id) 
               link_to 'Edit', edit_user_post_comment_path(@user, @post, comment) 
         end
         %>
     </td>
     <td>
       <%= 
-      if(session[:user_id]==comment.user_id)
+      if(current_user.id==comment.user_id)
         link_to 'Destroy', [@user,@post,comment], confirm: 'Are you sure?', method: :delete
       else
-        if (session[:user_id]==comment.post_id)
+        if (current_user.id==comment.post_id)
           link_to 'Destroy', [@user,@post,comment], confirm: 'Are you sure?', method: :delete
         end
       end
