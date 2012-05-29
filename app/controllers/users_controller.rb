@@ -64,9 +64,7 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    puts ">>>>>>>>>>>>> REGISTRATION>>>>>>>>>>>" 
     @user = User.new(params[:user])  
-    puts ">>>>>>>>>>>>>" , @user.email
     image =  params[:user][:image]
     
     if(image)
