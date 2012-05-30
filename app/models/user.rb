@@ -16,5 +16,7 @@ class User < ActiveRecord::Base
  	validates_uniqueness_of :email
  	validates :password, :presence => true, :length => {:within => 6..40}
  	validates_confirmation_of :password
+  
+  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }
 
 end
