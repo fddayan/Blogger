@@ -48,7 +48,7 @@ class CommentsController < ApplicationController
     @comment = Comment.new(params[:comment])
     @post = Post.find(params[:post_id])
     @user= User.find(params[:user_id])
-    @comment.user_id = session[:user_id]
+    @comment.user_id = current_user.id
     @comment.post_id = @post.id
     respond_to do |format|
       if @comment.save

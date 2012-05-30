@@ -10,13 +10,14 @@
   <%= @post.title %>
 </p>
 <%= image_tag @post.image.url(:medium) %>
+
 <p>
   <b>Content:</b>
   <%= @post.content %>
 </p>
 <%= link_to 'Edit', edit_user_post_path(current_user.id,@post) %> |
 <%= link_to 'Back', user_path(current_user) %>
-<p>----------------------------Nuevo Comentario-----------------------------</p>
+<p>----------------------------------Nuevo Comentario-----------------------------</p>
 <p>------------------------------------------------------------------------------------</p>
 <%= form_for([@user,@post,@comment]) do |f| %>
   <% if @comment.errors.any? %>
@@ -37,8 +38,8 @@
   <div class="actions">
     <%= f.submit %>
   </div>
-<% end %>
-<p>--------------------------------Comentarios----------------------------------</p>
+<% end %><br><br><br>
+<p>------------------------------------Comentarios----------------------------------</p>
 <p>------------------------------------------------------------------------------------</p>
 <table>
   <tr>
