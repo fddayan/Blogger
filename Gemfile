@@ -23,6 +23,8 @@ gem 'jquery-rails'
 gem 'devise'
 gem "paperclip", "~> 3.0"
 
+gem 'rmagick'
+
 group :development do
   gem "letter_opener"
 end
