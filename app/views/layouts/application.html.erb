@@ -22,7 +22,7 @@
     </div>
     <div class = "sidebar">
       <% if (user_signed_in?) %>
-        <div class="link"><%= link_to 'Edit my account', edit_user_path(@user) %></div>
+        <div class="link"><%= link_to 'Edit my account', edit_user_registration_path %></div>
         <%= link_to image_tag(@user.image), user_path(@user)%>
         <h1 class = "inside_title">My tags:</h1>
         <% tags = Tag.my_tags(current_user.id).order() %>

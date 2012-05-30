@@ -9,7 +9,6 @@ class RegistrationsController < Devise::RegistrationsController
 	    directory = "app/assets/images/"
 	    path = File.join(directory, image.original_filename)
 	    File.open(path, "wb") { |f| f.write(image.read) }
-
 	    resource.image = image.original_filename
 	  end
 
@@ -38,10 +37,9 @@ class RegistrationsController < Devise::RegistrationsController
       directory = "app/assets/images/"
       path = File.join(directory, image.original_filename)
       File.open(path, "wb") { |f| f.write(image.read) }
-
-      resource.image = image.original_filename
+      resource_params[:image] = image.original_filename
     end
-    puts "IMG >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>",resource.image
+    
     if resource.update_with_password(resource_params)
       if is_navigational_format?
         if resource.respond_to?(:pending_reconfirmation?) && resource.pending_reconfirmation?
