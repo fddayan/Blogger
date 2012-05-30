@@ -47,11 +47,11 @@ Blogger::Application.configure do
   config.action_mailer.default :charset => "utf-8"
 
   config.action_mailer.smtp_settings = {
+    enable_starttls_auto: true,
     address: "smtp.gmail.com",    
     port: 587,
-    domain: "example.com",
-    authentication: "plain",
-    enable_starttls_auto: true,
+    domain: "gmail.com",
+    authentication: "plain",    
     user_name: ENV["maria.alvarez@globant.com"],
     password: ENV["abc!1234"]
   }
