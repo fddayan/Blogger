@@ -26,6 +26,7 @@ end
 group :development do
   gem "letter_opener"
 end
+
 gem "paperclip", "~> 3.0"
 
 gem "acts_as_follower"

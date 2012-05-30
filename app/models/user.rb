@@ -19,4 +19,7 @@ class User < ActiveRecord::Base
  	validates :password, :presence => true, :length => {:within => 6..40}
  	validates_confirmation_of :password  
 
+  acts_as_followable
+  acts_as_follower
+
 end
