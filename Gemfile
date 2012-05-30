@@ -28,6 +28,7 @@ group :development do
 end
 gem "paperclip", "~> 3.0"
 
+gem "acts_as_follower"
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
