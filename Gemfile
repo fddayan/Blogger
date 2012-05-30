@@ -26,14 +26,12 @@ end
 group :development do
   gem "letter_opener"
 end
-<<<<<<< HEAD
-gem "paperclip", "~> 3.0"
-=======
+
+gem "acts_as_follower"
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
->>>>>>> 7e5976a5c051ba194a003b10710250191b283602
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 	
