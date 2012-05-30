@@ -9,7 +9,7 @@
   <b>Title:</b>
   <%= @post.title %>
 </p>
-
+<%= image_tag @post.image.url(:medium) %>
 <p>
   <b>Content:</b>
   <%= @post.content %>

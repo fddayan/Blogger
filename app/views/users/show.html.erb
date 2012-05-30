@@ -15,14 +15,14 @@
   <td>
     <% @user.posts.reverse.each do |post| %>
       <%= link_to post.title, user_post_path(@user,post) %>
+      
       <h6>Created time : <%= post.created_at %>
-      <%= image_tag @post.image.url %>
-      <%= image_tag @post.image.url(:medium) %>
-      <%= image_tag @post.image.url(:thumb) %>
-
       <%= link_to 'Delete', [@user,post], confirm: 'Are you sure?', method: :delete %></h6>
+      <%= image_tag post.image.url(:thumb) %>
+      
       <%= post.content %>
-      <br><br>
+      
+      <br>
     <% end %>
   </td>
   <td valign="top">
