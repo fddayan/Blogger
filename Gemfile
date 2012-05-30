@@ -21,6 +21,7 @@ group :assets do
 end
 gem 'jquery-rails'
 gem 'devise'
+gem "paperclip", "~> 3.0"
 
 group :development do
   gem "letter_opener"
