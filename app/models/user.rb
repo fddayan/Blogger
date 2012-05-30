@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :birthdate, :image, :lastname
+
   has_many :posts
   has_many :comments
 
@@ -15,6 +16,6 @@ class User < ActiveRecord::Base
  	validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :on => :create
  	validates_uniqueness_of :email
  	validates :password, :presence => true, :length => {:within => 6..40}
- 	validates_confirmation_of :password
+ 	validates_confirmation_of :password  
 
 end
