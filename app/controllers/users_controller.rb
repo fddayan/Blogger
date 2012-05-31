@@ -147,6 +147,7 @@ class UsersController < ApplicationController
   def logout  
     respond_to do |format|
       reset_session
+      
       format.html {redirect_to(:controller => "users", :action => "show_login") }
     end
   end

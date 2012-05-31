@@ -14,7 +14,8 @@
     <div class = "header">
 
       <% if (user_signed_in?) %>
-        <div class ="link"><%= link_to 'Logout', users_logout_path %></td></div>
+        <div class ="link"><%= link_to 'Logout', destroy_user_session_path, :method => :delete %></td></div>
+
       <%end%>
       <div class ="link"><%= link_to 'Search', search_index_path %></td> </div>
       <h1> Blogger</h1>
