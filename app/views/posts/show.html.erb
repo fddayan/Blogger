@@ -15,7 +15,10 @@
   <b>Content:</b>
   <%= @post.content %>
 </p>
-<%= link_to 'Edit', edit_user_post_path(current_user.id,@post) %> |
+
+<% if(current_user.id == @post.user_id) %>
+  <%= link_to 'Edit', edit_user_post_path(current_user.id,@post) %> | 
+<% end%>  
 <%= link_to 'Back', user_path(current_user) %>
 <p>----------------------------------Nuevo Comentario-----------------------------</p>
 <p>------------------------------------------------------------------------------------</p>
