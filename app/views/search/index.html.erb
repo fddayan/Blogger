@@ -6,22 +6,31 @@
 <div class="search">
 	<%= form_tag "search_by_fields", :remote=>true do%>
 	 	<div class="column">
-	  	<%= label_tag :tag %><br />
+	 		<div class="field">
+	  	<%= label_tag :tag %>
 	  	<%= text_field_tag :tag %>
+	  	</div>
 	 	</div>
 	 	<div class="column">
-	  	<%= label_tag :post_date %><br />
+	 		<div class="field">
+	  	<%= label_tag :post_date %>
 	  	<%= text_field_tag :post_date %>
+	  	</div>
 	 	</div>
 	 	<div class="column">
-	 		<%= label_tag :keyword %><br />
+	 		<div class="field">
+	 		<%= label_tag :keyword %>
 	  	<%= text_field_tag :keyword %>
+	  	</div>
 	 	</div>
-	 	<%= submit_tag("Search") %>
+
+	 	<div class = "actions">
+	 		<%= submit_tag("Search") %>
+	 	</div><br>
 		<p id="notice"><%= flash[:notice] %></p>
 	<% end %>
-</div>
-
+</div><br>
+<div class = "box_content post_content">
 	<table>
 	  <thead>
 	    <th>User</th>
@@ -31,3 +40,4 @@
 		<tbody id="div_posts">
 		</tbody>
 	</table>
+</div>

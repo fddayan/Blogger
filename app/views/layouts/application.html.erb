@@ -12,40 +12,56 @@
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <div class = "header">
+
       <% if (user_signed_in?) %>
         <div class ="link"><%= link_to 'Logout', users_logout_path %></td></div>
       <%end%>
       <div class ="link"><%= link_to 'Search', search_index_path %></td> </div>
+      <h1> Blogger</h1>
     </div>
     <div class = "info">
     <%= yield %>
     </div>
+
+
+
     <div class = "sidebar">
+      <h1 class = "inside_title">My stuff</h1>
+
       <% if (user_signed_in?) %>
-        <div class="link"><%= link_to 'Edit my account', edit_user_registration_path %></div>
+      <div class="tag_content box_content">
+        <div class="link"><%= link_to 'Edit my account', edit_user_registration_path %></div><br>
         <%= link_to image_tag(current_user.image), user_path(current_user)%>
-        <br><br><br><br>
+        </div>
      </td>
       <br>
-      <h1 class = "inside_title">Followed:</h1>
 
+      <div class="tag_content box_content">
+      <h1 class = "inside_title">Followed users</h1>
       <% current_user.get_followed.each do |f| %>
-        <div class ="link"><%= link_to f[:followable_name], user_show_public_path(f[:followable_id]) %></div><br><br>
-      <% end%><br>
-      <h1 class = "inside_title">Suggested:</h1>
+        <div class ="link"><%= link_to f[:followable_name], user_show_public_path(f[:followable_id]) %></div>
+      <% end%>
+      </div>
 
+      <div class="tag_content box_content">
+      <h1 class = "inside_title">Suggested users</h1>
       <% current_user.get_not_followed.each do |f| %>
         <div class ="link"><%= link_to f[:not_followable_name], user_show_public_path(f[:not_followable_id]) %></div>
       <% end%>
-        <h1 class = "inside_title">My tags:</h1>
+      </div>
+
+      <div class="tag_content box_content">
+      <h1 class = "inside_title">My tags</h1>
         <% tags = Tag.my_tags(current_user.id).order() %>
         <% tags.uniq.each do |t| %>
           <%= link_to t.label, tag_path(t.id) %>
         <% end%>
+      </div>
       <%end%>
+
     </div>
     <div class = "footer">
-      footer!!!
+      rails blogger -majo.adrian.fede.fer- 2012
     </div>
   </div>
 </body>
