@@ -1,6 +1,11 @@
 <p>
   <b>Name:</b>
   <%= @user.name %>
+  <% if (@can_follow)%>
+    <div class ="link"><%= link_to 'Follow', user_follow_path %></div>
+  <%else%>
+    <div class ="link"><%= link_to 'Unfollow', user_unfollow_path %></div>
+  <%end%>
 </p>
 
 <p>

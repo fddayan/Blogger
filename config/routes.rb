@@ -15,6 +15,8 @@ Blogger::Application.routes.draw do
          resources :comments
       end
       get 'show_public'
+      get 'follow'
+      get 'unfollow'
   end
 
   #resources :search 

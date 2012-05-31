@@ -153,8 +153,28 @@ class UsersController < ApplicationController
 
   def show_public
     @user = User.find(params[:user_id])
+    @can_follow = !(current_user.following?(@user))
+
     respond_to do |format|
       format.html 
     end
   end
+
+  def follow
+    user = User.find(params[:user_id])
+    current_user.follow(user)
+    respond_to do |format|
+      format.html { redirect_to current_user, notice: "Follow User: #{user.name}" }         
+    end
+  end
+
+
+  def unfollow
+    user = User.find(params[:user_id])
+    current_user.stop_following(user)
+    respond_to do |format|
+      format.html { redirect_to current_user, notice: "Unfollow User: #{user.name}" }         
+    end
+  end
+
 end
