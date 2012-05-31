@@ -18,11 +18,11 @@
       <%end%>
       <div class ="link"><%= link_to 'Search', search_index_path %></td> </div>
     </div>
-    <div class = "info">
+    <div class = "info" id="info">
     <%= yield %>
     </div>
 
-    <div class = "sidebar">
+    <div class = "sidebar" id="sidebar">
       <h1 class = "inside_title">My stuff</h1>
 
       <% if (user_signed_in?) %>
