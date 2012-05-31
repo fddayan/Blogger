@@ -31,6 +31,8 @@ gem "paperclip", "~> 3.0"
 
 gem "acts_as_follower"
 
+gem 'jquery-ui-rails'
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
