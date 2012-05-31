@@ -36,7 +36,7 @@ div.sidebar {
 	border-width: 2px;
 	float: left;
 	width: 178px;
-	min-height: 163px;
+	min-height: 239px;
 
 }
 div.info {
@@ -69,7 +69,9 @@ div.sidebar img{
 h1.inside_title{
 	margin: 0;
 	font-size: 15px;
+	width: 174px;
 	float: left;
+	text-align: center;
 }
 
 div.sidebar a{
@@ -82,4 +84,23 @@ div.sidebar a{
 div.sidebar a:hover{
 	background-color: transparent;
 	text-decoration: underline;
+}
+
+div.tag_content {
+
+	width: 174px;
+
+}
+div.post_content {
+
+	width: 750px;
+
+}
+div.box_content {
+	float: left;
+	border-top: 2px solid black;
+	border-bottom: 2px solid black;
+	margin-top: 2px;
+	padding: 2px;
+
 }

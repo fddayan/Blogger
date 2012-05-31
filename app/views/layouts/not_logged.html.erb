@@ -21,20 +21,47 @@
     <div class = "info">
     <%= yield %>
     </div>
+
     <div class = "sidebar">
+      <h1 class = "inside_title">My stuff</h1>
+
       <% if (user_signed_in?) %>
-        <div class="link"><%= link_to 'Edit my account', edit_user_path(current_user) %></div>
+      <div class="tag_content box_content">
+        <div class="link"><%= link_to 'Edit my account', edit_user_registration_path %></div><br>
         <%= link_to image_tag(current_user.image), user_path(current_user)%>
-        <h1 class = "inside_title">My tags:</h1>
+        </div>
+     </td>
+      <br>
+
+      <div class="tag_content box_content">
+      <h1 class = "inside_title">Followed users</h1>
+      <% current_user.get_followed.each do |f| %>
+        <div class ="link"><%= link_to f[:followable_name], user_show_public_path(f[:followable_id]) %></div>
+      <% end%>
+      </div>
+
+      <div class="tag_content box_content">
+      <h1 class = "inside_title">Suggested users</h1>
+      <% current_user.get_not_followed.each do |f| %>
+        <div class ="link"><%= link_to f[:not_followable_name], user_show_public_path(f[:not_followable_id]) %></div>
+      <% end%>
+      </div>
+
+      <div class="tag_content box_content">
+      <h1 class = "inside_title">My tags</h1>
         <% tags = Tag.my_tags(current_user.id).order() %>
         <% tags.uniq.each do |t| %>
           <%= link_to t.label, tag_path(t.id) %>
         <% end%>
+      </div>
       <%end%>
 
     </div>
+
+
+    
     <div class = "footer">
-      footer!!!
+      rails blogger -majo.adrian.fede.fer- 2012
     </div>
   </div>
 </body>
