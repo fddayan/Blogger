@@ -20,5 +20,8 @@ $(function() {
   $('.datepicker').datepicker();
 });
 $(document).ready(function() {
-  $("#sidebar").height($("#info").height());
+	if($("#sidebar").height()>$("#info").height())
+  		$("#sidebar").height($("#info").height());
+  	else
+  		$("#info").height($("#sidebar").height());
 });
