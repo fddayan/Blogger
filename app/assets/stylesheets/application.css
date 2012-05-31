@@ -10,7 +10,9 @@
  *
  *= require_self
  *= require_tree .
-*/
+ *
+ *= require jquery.ui.all
+ */
 div.content {
 	width: 1000px;
 	position: absolute;
