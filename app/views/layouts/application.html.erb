@@ -24,10 +24,14 @@
       <% if (user_signed_in?) %>
         <div class="link"><%= link_to 'Edit my account', edit_user_registration_path %></div>
         <%= link_to image_tag(@user.image), user_path(@user)%>
-        <br>
-<!-- ACA ES NECESARIO RECORRER TODOS LOS ELEMENTOS DEL follows PARA MOSTRAR LOS LINKS A CADA USUARIO AL QUE SE HIZO follow-->
-        <div class ="link"><%= link_to current_user.follows[0].followable_id, user_show_public_path(current_user.follows[0].followable_id) %></td></div>
-        
+        <br><br><br><br>
+     </td>
+      <br>
+      <h1 class = "inside_title">Followed:</h1>
+
+      <% current_user.get_followable_names.each do |f| %>
+        <div class ="link"><%= link_to f[:followable_name], user_show_public_path(f[:followable_id]) %></div><br><br>
+      <% end%>
         <h1 class = "inside_title">My tags:</h1>
         <% tags = Tag.my_tags(current_user.id).order() %>
         <% tags.uniq.each do |t| %>

@@ -21,5 +21,12 @@ class User < ActiveRecord::Base
 
   acts_as_followable
   acts_as_follower
+  def get_followable_names
+    result = []
+    self.follows.each do |f|
+        result << {:followable_id => f.followable_id, :followable_name => User.find(f.followable_id).name}
+    end
+    return result
+  end
 
 end
