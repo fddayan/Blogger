@@ -29,8 +29,13 @@
       <br>
       <h1 class = "inside_title">Followed:</h1>
 
-      <% current_user.get_followable_names.each do |f| %>
+      <% current_user.get_followed.each do |f| %>
         <div class ="link"><%= link_to f[:followable_name], user_show_public_path(f[:followable_id]) %></div><br><br>
+      <% end%><br>
+      <h1 class = "inside_title">Suggested:</h1>
+
+      <% current_user.get_not_followed.each do |f| %>
+        <div class ="link"><%= link_to f[:not_followable_name], user_show_public_path(f[:not_followable_id]) %></div>
       <% end%>
         <h1 class = "inside_title">My tags:</h1>
         <% tags = Tag.my_tags(current_user.id).order() %>

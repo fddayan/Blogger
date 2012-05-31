@@ -34,7 +34,8 @@ div.sidebar {
 	border-width: 2px;
 	float: left;
 	width: 178px;
-	height: 163px;
+	min-height: 163px;
+
 }
 div.info {
 	background-color: #00CCFF;

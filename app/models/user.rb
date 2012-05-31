@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
 
   acts_as_followable
   acts_as_follower
-  def get_followable_names
+  def get_followed
     result = []
     self.follows.each do |f|
         result << {:followable_id => f.followable_id, :followable_name => User.find(f.followable_id).name}
@@ -29,4 +29,24 @@ class User < ActiveRecord::Base
     return result
   end
 
+def get_followed_id
+    result = []
+    self.follows.each do |f|
+        result << f.followable_id
+    end
+    return result
+  end
+
+  def get_not_followed
+    total = []
+    result = []
+    User.all.each do |u|
+      total << u.id
+    end
+    total = total-self.get_followed_id-[self.id]
+    total.each do |f|
+        result << {:not_followable_id => f, :not_followable_name => User.find(f).name}
+    end
+    return result
+  end
 end
