@@ -23,7 +23,7 @@
     <div class = "sidebar">
       <% if (user_signed_in?) %>
         <div class="link"><%= link_to 'Edit my account', edit_user_registration_path %></div>
-        <%= link_to image_tag(@user.image), user_path(@user)%>
+        <%= link_to image_tag(current_user.image), user_path(current_user)%>
         <br><br><br><br>
      </td>
       <br>
