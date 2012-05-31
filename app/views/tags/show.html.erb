@@ -1,10 +1,15 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Label:</b>
-  <%= @tag.label %>
+	<b><%= @tag.label %>
+  's posts:</b><br><br>  	
+  <% @posts = Post.by_tag(@tag.label) %>
+  <% @posts.each do |p| %>
+  	<b>Title:</b>
+  	<%= link_to p.title, user_post_path(@user,p) %><br>
+  	----------------
+  <%end%>
 </p>
 
 
-<%= link_to 'Edit', edit_tag_path(@tag) %> |
 <%= link_to 'Back', @user %>
