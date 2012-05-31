@@ -9,24 +9,24 @@
 </head>
 <body>  
   <div class = "content">
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
     <div class = "header">
 
       <% if (user_signed_in?) %>
         <div class ="link"><%= link_to 'Logout', destroy_user_session_path, :method => :delete %></td></div>
-
       <%end%>
+
       <div class ="link"><%= link_to 'Search', search_index_path %></td> </div>
       <h1> Blogger</h1>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
     </div>
-    <div class = "info">
+    <div class = "info" id="info">
     <%= yield %>
     </div>
 
 
 
-    <div class = "sidebar">
+    <div class = "sidebar" id="sidebar">
       <h1 class = "inside_title">My stuff</h1>
 
       <% if (user_signed_in?) %>
@@ -55,7 +55,7 @@
       <h1 class = "inside_title">My tags</h1>
         <% tags = Tag.my_tags(current_user.id).order() %>
         <% tags.uniq.each do |t| %>
-          <%= link_to t.label, tag_path(t.id) %>
+          <%= link_to t.label, tag_path(t.id), :class => "linkTag"%>
         <% end%>
       </div>
       <%end%>

@@ -19,3 +19,6 @@
 $(function() {
   $('.datepicker').datepicker();
 });
+$(document).ready(function() {
+  $("#sidebar").height($("#info").height());
+});
