@@ -10,6 +10,8 @@ class RegistrationsController < Devise::RegistrationsController
 	    path = File.join(directory, image.original_filename)
 	    File.open(path, "wb") { |f| f.write(image.read) }
 	    resource.image = image.original_filename
+    else
+      resource.image = "default_avatar.jpg"
 	  end
 
 		
