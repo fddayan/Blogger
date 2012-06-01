@@ -136,10 +136,11 @@ div.box_content {
 	padding: 2px;
 
 }
-p.notice{
+p.notice, p.alert{
 	float:left;
 	clear:left;
 	color:red;
+	font-weight: bold;
 }
 div a.linkTag{
 	color:#000;
