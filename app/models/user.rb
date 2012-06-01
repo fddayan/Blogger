@@ -10,7 +10,8 @@ class User < ActiveRecord::Base
 
   has_many :posts
   has_many :comments
-  
+  has_and_belongs_to_many :group
+  has_many :group
   
   validates_presence_of :lastname, :name
 	validates :email, :presence => true
