@@ -9,7 +9,6 @@ class ApplicationController < ActionController::Base
   	#	render :file => "#{Rails.root}/public/403"
   	#end
 	# TO_DELETE push test over http --fer--
-  protect_from_forgery
  
   	def after_sign_in_path_for(user)
     	user_path user
