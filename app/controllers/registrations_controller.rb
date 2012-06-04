@@ -13,8 +13,7 @@ class RegistrationsController < Devise::RegistrationsController
     else
       resource.image = "default_avatar.jpg"
 	  end
-
-		
+		  resource.role="poster"
     if resource.save
       if resource.active_for_authentication?
         set_flash_message :notice, :signed_up if is_navigational_format?
