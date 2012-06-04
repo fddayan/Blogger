@@ -21,6 +21,11 @@
       <br />
       <%= image_tag post.image.url(:thumb) %>
       <%= post.content %>
+      <% if can? :create, :comments %>
+        ---------<%= current_user.role %>puede
+      <%else%>
+        ---------<%= current_user.role %>no puede
+      <% end %>
       <h6>Created time : <%= post.created_at %>
       <%= link_to 'Delete', [@user,post], confirm: 'Are you sure?', method: :delete %></h6>
       
