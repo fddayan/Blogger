@@ -3,18 +3,16 @@ class Ability
 
   def initialize(current_user)
     current_user ||= User.new
+    
     if current_user.role == "admin"
         can :manage, :all
-    end
-    if current_user.role == "manger"
+    elsif current_user.role == "manger"
         can :manage, [:posts, :comments]
-    end
-    if current_user.role == "poster"
+    elsif current_user.role == "poster"
         can :create, [:posts, :comments]
         can :read, :posts
-        
-    end
-    if current_user.nil? ; can :read, :all
+    else
+        can :read, :all
     end
   end
     # Define abilities for the passed in user here. For example:
