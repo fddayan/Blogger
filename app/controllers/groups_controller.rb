@@ -1,6 +1,8 @@
 class GroupsController < ApplicationController
+ load_and_authorize_resource
   # GET /groups
   # GET /groups.json
+
   def index
     @groups = Group.all
 
@@ -14,7 +16,7 @@ class GroupsController < ApplicationController
   # GET /groups/1.json
   def show
     @group = Group.find(params[:id])
-
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @group }
