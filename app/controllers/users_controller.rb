@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
   load_and_authorize_resource
   before_filter :authenticate_user!
-  
+  load_and_authorize_resource
+
   def require_login
     if(session[:user_id] == nil) 
       redirect_to users_show_login_path

@@ -1,5 +1,7 @@
 class RegistrationsController < Devise::RegistrationsController
- load_and_authorize_resource
+
+  load_and_authorize_resource
+
 	def create
   	build_resource
   	
