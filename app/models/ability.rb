@@ -7,10 +7,10 @@ class Ability
     if current_user.role == "admin"
         can :manage, :all
     elsif current_user.role == "manger"
-        can :manage, [:posts, :comments]
+        can :manage, [Post, Comment]
     elsif current_user.role == "poster"
-        can :create, [:posts, :comments]
-        can :read, :posts
+        can :create, [Post, Comment]
+        can :read, Post
     else
         can :read, :all
     end
