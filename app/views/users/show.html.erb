@@ -21,7 +21,7 @@
       <br />
       <%= image_tag post.image.url(:thumb) %>
       <%= post.content %>
-      <% if can? :create, :comments %>
+      <% if can? :read, :posts %>
         ---------<%= current_user.role %>puede
       <%else%>
         ---------<%= current_user.role %>no puede
