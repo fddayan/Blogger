@@ -2,17 +2,20 @@ class Ability
   include CanCan::Ability
 
   def initialize(current_user)
-    user = current_user
-    if user.role == "admin"
+    current_user ||= User.new
+    if current_user.role == "admin"
         can :manage, :all
     end
-    if user.role == "manger"
+    if current_user.role == "manger"
         can :manage, [:posts, :comments]
     end
-    if user.role == "poster"
+    if current_user.role == "poster"
         can :create, [:posts, :comments]
+        can :read, :posts
+        
     end
-
+    if current_user.nil? ; can :read, :all
+    end
   end
     # Define abilities for the passed in user here. For example:
     #

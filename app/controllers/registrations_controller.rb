@@ -1,4 +1,5 @@
 class RegistrationsController < Devise::RegistrationsController
+  skip_authorization_check
 
 	def create
   	build_resource
