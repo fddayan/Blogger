@@ -4,6 +4,8 @@ Blogger::Application.routes.draw do
 
   devise_for :users, :controllers => {:registrations => "registrations"}
 
+  match '/users/show_login' => 'users#show_login'
+  
   root :to => 'users#index'
 
   resources :tags
