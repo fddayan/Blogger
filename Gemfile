@@ -33,6 +33,8 @@ gem "acts_as_follower"
 
 gem 'jquery-ui-rails'
 
+gem 'haml', '~> 3.1.6'
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 

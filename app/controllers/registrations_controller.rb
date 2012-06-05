@@ -1,10 +1,5 @@
 class RegistrationsController < Devise::RegistrationsController
 
-<<<<<<< HEAD
-  #load_and_authorize_resource
-
-=======
->>>>>>> e7edf8af4e7b2455f0e74113700df2113c5d9041
 	def create
   	build_resource
   	
