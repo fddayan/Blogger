@@ -1,6 +1,9 @@
-class UsersController < ApplicationController
-  before_filter :authenticate_user!
+  class UsersController < ApplicationController
+ #before_filter :require_login, :only => [:index, :update]
+ #before_filter :require_auth, :only => [:show, :index, :update]
   load_and_authorize_resource
+  before_filter :authenticate_user!
+  
 
   def require_login
     if(session[:user_id] == nil) 
