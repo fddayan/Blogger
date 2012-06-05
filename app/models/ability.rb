@@ -1,15 +1,16 @@
 class Ability
   include CanCan::Ability
 
-  def initialize(current_user)
-
-    current_user ||= User.new
+  def initialize(user)
+    user ||= User.new    
     
-    if current_user.role == "admin"
+    puts ">>>>>>>>>>>>", user.role
+    
+    if user.role == "admin"
         can :manage, :all
-    elsif current_user.role == "manger"
+    elsif user.role == "manger"
         can :manage, [Post, Comment]
-    elsif current_user.role == "poster"
+    elsif user.role == "poster"
         can :create, [Post, Comment]
         can :read, Post
         can :manage, User
