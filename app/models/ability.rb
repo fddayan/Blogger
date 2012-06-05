@@ -1,21 +1,21 @@
 class Ability
   include CanCan::Ability
 
-  def initialize(current_user)
+  def initialize(user)
+    user ||= User.new
 
-    current_user ||= User.new
-    
-    if current_user.role == "admin"
+    if user.role == "admin"
         can :manage, :all
-    elsif current_user.role == "manger"
+    elsif user.role == "manger"
         can :manage, [Post, Comment]
-    elsif current_user.role == "poster"
+        can :read, :all
+    elsif user.role == "poster"
         can :create, [Post, Comment]
-        can :read, Post
-        can :manage, User
+        can :read, :all
     else
         can :read, :all
     end
+
   end
     # Define abilities for the passed in user here. For example:
     #

@@ -1,0 +1,22 @@
+= form_for([@user,@post], :html => { :multipart => true }) do |f|
+  - if @post.errors.any?
+    %div#error_explanation
+      %h2
+        = pluralize(@post.errors.count, "error")
+        prohibited this post from being saved:
+      %ul
+        - @post.errors.full_messages.each do |msg|
+          %li
+            = msg
+  - f.hidden_field :user_id, {:value => @post.user_id}
+  %div.field
+    = f.label :title
+    = f.text_field :title
+    = f.label :content
+    = f.text_area :content
+    = label_tag :tag
+    = text_field_tag :tag
+    = label_tag :image
+    = f.file_field :image
+  %div.actions
+    = f.submit
