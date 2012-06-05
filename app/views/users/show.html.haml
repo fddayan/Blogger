@@ -1,0 +1,24 @@
+%h1.inside_title
+  = @user.name
+  's home
+%br
+%table
+  %tr
+    %td
+    %h2 My Posts:
+  %tr
+    %td
+      - @user.posts.reverse.each do |post|
+        %div.box_content.post_content
+          = link_to post.title, user_post_path(@user,post)
+          %br
+          %br
+          = image_tag post.image.url(:thumb)
+          = post.content
+          %h6
+            Created time :
+            = post.created_at
+            = link_to 'Delete', [@user,post], confirm: 'Are you sure?', method: :delete
+%h1.inside_title Create a new post:
+%br
+= render 'form_new_post'
