@@ -44,12 +44,7 @@ class PostsController < ApplicationController
     tags = params[:tag].split(', ')
     tags.each do |t|
       t.strip!
-      tag = Tag.where(:label => t).first
-      if (tag == nil)
-        tag = Tag.new(:label => t)
-        tag.save
-      end
-      @post.tags << tag
+      @post.tag_list.add(t)
     end
     respond_to do |format|
       if @post.save
@@ -71,14 +66,17 @@ class PostsController < ApplicationController
     @user= User.find(params[:user_id])
     @post.user_id = (params[:user_id])
     tags = params[:tag].split(', ')
-    @post.tags.clear
+#    @post.remove_all_tags
     tags.each do |t|
+=begin
       tag = Tag.where(:label => t).first
       if (tag == nil)
         tag = Tag.new(:label => t)
         tag.save
       end
       @post.tags << tag
+=end
+      @post.tag_list.add(t)
     end
     respond_to do |format|
       if @post.update_attributes(params[:post])

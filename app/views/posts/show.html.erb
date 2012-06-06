@@ -15,6 +15,14 @@
   <b>Content:</b>
   <%= @post.content %>
 </p>
+<p>
+  <b>Tags:</b>
+    <% tags =@post.tag_counts.order() %>
+    <% tags.uniq.each do |t| %>
+      <%= link_to t.name, tag_path(t.id), :class => "linkTag"%>
+    <% end%>
+</p>
+
 
 <% if(current_user.id == @post.user_id) %>
   <%= link_to 'Edit', edit_user_post_path(current_user.id,@post) %> | 
