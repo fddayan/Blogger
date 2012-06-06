@@ -5,9 +5,10 @@
   's posts:</b><br><br>  	
   <% @posts = Post.by_tag(@tag.name) %>
   <% @posts.each do |p| %>
-  	<b>Title:</b>
-  	<%= link_to p.title, user_post_path(@user,p) %><br>
-  	----------------
+  	<p>
+  		<b>Title:</b>
+  		<%= link_to p.title, user_post_path(@user,p) %><br>
+  	</p>
   <%end%>
 </p>
 
