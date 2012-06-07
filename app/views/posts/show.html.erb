@@ -74,10 +74,10 @@
     <td>
       <%= 
       if(current_user.id==comment.user_id)
-        link_to 'Destroy', [@user,@post,comment], confirm: 'Are you sure?', method: :delete
+        link_to 'Destroy', [@user,@post,comment], confirm: t('posts.prueba'), method: :delete
       else
         if (current_user.id==comment.post_id)
-          link_to 'Destroy', [@user,@post,comment], confirm: 'Are you sure?', method: :delete
+          link_to 'Destroy', [@user,@post,comment], confirm: t('posts.prueba'), method: :delete
         end
       end
       %>
