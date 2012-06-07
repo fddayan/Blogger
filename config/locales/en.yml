@@ -3,4 +3,7 @@
 en:
   hello: "Hello world"
   posts:
-    prueba: "Are you sure?"
+    confirm: "Are you sure?"
+  comments:
+    create_comment: "Create comment"
+    new_comment: "New comment"

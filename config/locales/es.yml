@@ -3,4 +3,6 @@
 es:
   hello: "Hola"
   posts:
-    prueba: "¿Estás seguro?"
+    confirm: "¿Estás seguro?"
+  comments:
+    create_comment: "Crear comentario"
