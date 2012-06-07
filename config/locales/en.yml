@@ -4,6 +4,14 @@ en:
   hello: "Hello world"
   posts:
     confirm: "Are you sure?"
+    my_posts: "My Posts:"
+    created_time: "Created time:"
+    create_new_post: "Create a new post:"
+    title: "Title"
+    content: "Content"
+    image: "Image"
+    tag: "Tag"
+    create_post: "Create post"
   comments:
     create_comment: "Create comment"
     new_comment: "New comment"

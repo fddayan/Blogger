@@ -1,8 +1,17 @@
 # Sample localization file for English. Add more files in this directory for other locales.
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 es:
-  hello: "Hola"
+  hello: "¡Hola Mundo"
   posts:
     confirm: "¿Estás seguro?"
+    my_posts: "Mis Posts:"
+    created_time: "Fecha de creación:"
+    create_new_post: "Crear nuevo post:"
+    title: "Título"
+    content: "Contenido"
+    image: "Imagen"
+    tag: "Tag"
+    create_post: "Crear post"
   comments:
     create_comment: "Crear comentario"
+    new_comment: "Comentario nuevo"
