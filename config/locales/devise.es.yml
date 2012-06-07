@@ -8,7 +8,6 @@ es:
       not_saved:
         one: "1 error evitó guardar este %{resource}:"
         other: "%{count} errores evitaron guardar este %{resource}:"
-
   devise:
     failure:
       already_authenticated: 'Ya está conectado/a.'
