@@ -5,7 +5,8 @@
 %table
   %tr
     %td
-    %h2 My Posts:
+    %h2 
+      = t('posts.my_posts')
   %tr
     %td
       - @user.posts.reverse.each do |post|
@@ -16,9 +17,10 @@
           = image_tag post.image.url(:thumb)
           = post.content
           %h6
-            Created time :
+            = t('posts.created_time')
             = post.created_at
             = link_to 'Delete', [@user,post], confirm: 'Are you sure?', method: :delete
-%h1.inside_title Create a new post:
+%h1.inside_title
+  = t('posts.create_new_post')
 %br
 = render 'form_new_post'

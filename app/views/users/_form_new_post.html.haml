@@ -10,13 +10,13 @@
             = msg
   - f.hidden_field :user_id, {:value => @post.user_id}
   %div.field
-    = f.label :title
+    = f.label t('posts.title')
     = f.text_field :title
-    = f.label :content
+    = f.label t('posts.content')
     = f.text_area :content
-    = label_tag :tag
+    = label_tag t('posts.tag')
     = text_field_tag :tag
-    = label_tag :image
+    = label_tag t('posts.image')
     = f.file_field :image
   %div.actions
-    = f.submit
+    = f.submit t('posts.create_post')
