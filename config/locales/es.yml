@@ -6,3 +6,4 @@ es:
     confirm: "¿Estás seguro?"
   comments:
     create_comment: "Crear comentario"
+    new_comment: "Nuevo comentario"
