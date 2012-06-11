@@ -39,6 +39,11 @@ gem 'haml', '~> 3.1.6'
 
 gem 'acts-as-taggable-on', '~> 2.3.1'
 
+group :test, :development do
+  gem "rspec-rails", "~> 2.0"
+  gem "rspec-core"
+end
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
