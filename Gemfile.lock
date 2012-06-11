@@ -162,6 +162,10 @@ DEPENDENCIES
   paperclip (~> 3.0)
   rails (= 3.2.3)
   rmagick
+<<<<<<< HEAD
+=======
+  rspec-core
+>>>>>>> a9af9d100e16e522bf166baa13d4e18cb7b05326
   rspec-rails (~> 2.0)
   sass-rails (~> 3.2.3)
   sqlite3
