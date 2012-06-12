@@ -16,7 +16,7 @@ describe PostsController do
   def do_update    
     @postTest = post :create,:post=>{:title=>"titulito"}
     post :update, :post=>@postTest, :title=>"nuevo"    
-    @postTest.title.should eq("nuevo")
+    @postTest.title.should eq(["nuevo"])
   end
 
   it "update a post" do
