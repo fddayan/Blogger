@@ -4,7 +4,7 @@ describe Post do
 
   def do_create
     #post :create, :menu_item=>{:name=>"value"}
-    post :create, :post=>{:title=>"titulito",:content=>"contenidito",:user_id=>123,:tag=>"taguito"}
+    post :create,:post=>{:title=>"titulito"}
   end
 
   it "creates a new post" do
