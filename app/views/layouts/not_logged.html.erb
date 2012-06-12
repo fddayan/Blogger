@@ -12,9 +12,9 @@
   <div class = "content">
     <div class = "header">
       <% if (user_signed_in?) %>
-        <div class ="link"><%= link_to 'Logout', users_logout_path %></td></div>
+        <div class ="link"><%= link_to 'Logout', destroy_user_session_path, :method => :delete %></td></div>
       <% else %>
-        <div class ="link"><%= link_to 'Login', users_show_login_path %></td></div>
+        <div class ="link"><%= link_to 'Login', new_user_session_path %></td></div>
       <%end%>
       <div class ="link"><%= link_to 'Search', search_index_path %></td> </div>
     </div>
@@ -49,9 +49,9 @@
 
       <div class="tag_content box_content">
       <h1 class = "inside_title">My tags</h1>
-        <% tags = Tag.my_tags(current_user.id).order() %>
+        <% tags = current_user.posts.tag_counts.order() %>
         <% tags.uniq.each do |t| %>
-          <%= link_to t.label, tag_path(t.id) %>
+          <%= link_to t.name, tag_path(t.id) %>
         <% end%>
       </div>
       <%end%>

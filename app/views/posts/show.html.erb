@@ -15,12 +15,20 @@
   <b>Content:</b>
   <%= @post.content %>
 </p>
+<p>
+  <b>Tags:</b>
+    <% tags =@post.tag_counts.order() %>
+    <% tags.uniq.each do |t| %>
+      <%= link_to t.name, tag_path(t.id), :class => "linkTag"%>
+    <% end%>
+</p>
+
 
 <% if(current_user.id == @post.user_id) %>
   <%= link_to 'Edit', edit_user_post_path(current_user.id,@post) %> | 
 <% end%>  
 <%= link_to 'Back', user_path(current_user) %>
-<p>----------------------------------Nuevo Comentario-----------------------------</p>
+<p>----------------------------------<%=t('comments.new_comment')%>-----------------------------</p>
 <p>------------------------------------------------------------------------------------</p>
 <%= form_for([@user,@post,@comment]) do |f| %>
   <% if @comment.errors.any? %>
@@ -39,7 +47,7 @@
     <%= f.text_field :content %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit t('comments.create_comment') %>
   </div>
 <% end %><br><br><br>
 <p>------------------------------------Comentarios----------------------------------</p>
@@ -66,10 +74,10 @@
     <td>
       <%= 
       if(current_user.id==comment.user_id)
-        link_to 'Destroy', [@user,@post,comment], confirm: 'Are you sure?', method: :delete
+        link_to 'Destroy', [@user,@post,comment], confirm: t('posts.confirm'), method: :delete
       else
         if (current_user.id==comment.post_id)
-          link_to 'Destroy', [@user,@post,comment], confirm: 'Are you sure?', method: :delete
+          link_to 'Destroy', [@user,@post,comment], confirm: t('posts.confirm'), method: :delete
         end
       end
       %>

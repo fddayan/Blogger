@@ -11,6 +11,8 @@ gem 'devise'
 gem "paperclip", "~> 3.0"
 
 gem 'rmagick'
+
+gem "haml", "~> 3.1.6"
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -32,6 +34,15 @@ gem "cancan"
 gem "acts_as_follower"
 
 gem 'jquery-ui-rails'
+
+gem 'haml', '~> 3.1.6'
+
+gem 'acts-as-taggable-on', '~> 2.3.1'
+
+group :test, :development do
+  gem "rspec-rails", "~> 2.0"
+  gem "rspec-core"
+end
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

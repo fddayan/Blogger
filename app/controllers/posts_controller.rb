@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
-  before_filter :authenticate_user! 
   load_and_authorize_resource
+  before_filter :authenticate_user! 
   # GET /posts/1
   # GET /posts/1.json
   def show
@@ -44,12 +44,7 @@ class PostsController < ApplicationController
     tags = params[:tag].split(', ')
     tags.each do |t|
       t.strip!
-      tag = Tag.where(:label => t).first
-      if (tag == nil)
-        tag = Tag.new(:label => t)
-        tag.save
-      end
-      @post.tags << tag
+      @post.tag_list.add(t)
     end
     respond_to do |format|
       if @post.save
@@ -71,14 +66,8 @@ class PostsController < ApplicationController
     @user= User.find(params[:user_id])
     @post.user_id = (params[:user_id])
     tags = params[:tag].split(', ')
-    @post.tags.clear
     tags.each do |t|
-      tag = Tag.where(:label => t).first
-      if (tag == nil)
-        tag = Tag.new(:label => t)
-        tag.save
-      end
-      @post.tags << tag
+      @post.tag_list.add(t)
     end
     respond_to do |format|
       if @post.update_attributes(params[:post])
@@ -90,6 +79,7 @@ class PostsController < ApplicationController
       end
     end
   end
+
   # DELETE users/{id}/posts/1
   # DELETE users/{id}/posts/1.json
   def destroy

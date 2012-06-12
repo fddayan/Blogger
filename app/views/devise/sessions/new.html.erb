@@ -1,4 +1,12 @@
 <h2>Sign in</h2>
+<!--
+<div class ="link"><%= link_to('ES', user_session_path(:locale=>'es')) %></td> </div>
+<div class ="link"><%= link_to('EN', user_session_path(:locale=>'en')) %></td> </div>
+-->
+<div>
+  <%= select_tag "lang", "<option>en</option><option>es</option>".html_safe %>
+
+</div>
 
 
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>

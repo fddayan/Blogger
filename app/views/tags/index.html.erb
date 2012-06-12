@@ -10,14 +10,10 @@
 
 <% @tags.each do |tag| %>
   <tr>
-    <td><%= tag.label %></td>
+    <td><%= tag.name %></td>
     <td><%= link_to 'Show', tag %></td>
-    <td><%= link_to 'Edit', edit_tag_path(tag) %></td>
-    <td><%= link_to 'Destroy', tag, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
-
-<%= link_to 'New Tag', new_tag_path %>
