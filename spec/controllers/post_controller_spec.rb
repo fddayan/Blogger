@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Post do
+describe PostsController do
 
   def do_create
     #post :create, :menu_item=>{:name=>"value"}
