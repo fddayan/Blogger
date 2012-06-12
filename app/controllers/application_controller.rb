@@ -2,10 +2,10 @@ class ApplicationController < ActionController::Base
   	before_filter :set_locale
 
     def set_locale            
-      if request.env['HTTP_ACCEPT_LANGUAGE']
-        I18n.locale = request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first || "en"
+      if (request.env['HTTP_ACCEPT_LANGUAGE'])
+        I18n.locale = request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first
       else
-        I18n.locale = "en"
+        I18n.locale = I18n.default_locale
       end
     end
     
