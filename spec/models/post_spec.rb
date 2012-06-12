@@ -9,7 +9,7 @@ describe Post do
 
   it "creates a new post" do
     #MenuItem.should_receive(:new).with("name"=>"value").and_return(@menu_item)
-    Post.should_receive(:new)
+    #Post.should_receive(:new)
     do_create
   end
 
