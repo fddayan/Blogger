@@ -9,6 +9,7 @@ describe PostsController do
   end
 
   it "creates a new post" do
+    Post.should_receive(:new).with("title"=>"titulito").and_return(@post)
     do_create
   end
 
@@ -29,6 +30,10 @@ describe PostsController do
 
   it "delete a post" do
     do_destroy    
+
+  it "should be redirect" do
+    do_create
+    response.should be_redirect
   end
 
 end
