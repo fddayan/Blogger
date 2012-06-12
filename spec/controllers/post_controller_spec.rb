@@ -12,4 +12,23 @@ describe PostsController do
     do_create
   end
 
+  def do_update    
+    @postTest = post :create,:post=>{:title=>"titulito"}
+    post :update, :post=>@postTest, :title=>"nuevo"    
+    @postTest.title.should eq("nuevo")
+  end
+
+  it "update a post" do
+    do_update    
+  end
+
+  def do_destroy
+    @postTest = post :create,:post=>{:title=>"titulito"}
+    post :destroy, :post=>@postTest        
+  end
+
+  it "delete a post" do
+    do_destroy    
+  end
+
 end
