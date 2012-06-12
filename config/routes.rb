@@ -1,5 +1,9 @@
 Blogger::Application.routes.draw do
 
+  resources :pruebalocas
+
+  resources :tests
+
   resources :groups
 
   devise_for :users, :controllers => {:registrations => "registrations"}
