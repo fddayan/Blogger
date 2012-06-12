@@ -30,6 +30,7 @@ describe PostsController do
 
   it "delete a post" do
     do_destroy    
+  end
 
   it "should be redirect" do
     do_create
