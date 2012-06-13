@@ -4,37 +4,20 @@ describe PostsController do
 
   include Devise::TestHelpers # to give your spec access to helpers
   
-  def do_create    
-    post :create,:post=>{:title=>"titulito"}
+  before :all do 
+    @post = Post.create :content=>"xxxx", :title => "xxxx"
   end
-
+  
   it "creates a new post" do
-    Post.should_receive(:new).with("title"=>"titulito").and_return(@post)
-    do_create
-  end
-
-  def do_update    
-    @postTest = post :create,:post=>{:title=>"titulito"}
-    post :update, :post=>@postTest, :title=>"nuevo"    
-    @postTest.title.should eq(["nuevo"])
+    post :create,:post=>@post.attributes
   end
 
   it "update a post" do
-    do_update    
+    post :create,:id=>@post.id, :post=>@post.attributes
   end
-
-  def do_destroy
-    @postTest = post :create,:post=>{:title=>"titulito"}
-    post :destroy, :post=>@postTest        
-  end
-
+  
   it "delete a post" do
-    do_destroy    
-  end
-
-  it "should be redirect" do
-    do_create
-    response.should be_redirect
+    post :destroy, :post=>@post        
   end
 
 end
