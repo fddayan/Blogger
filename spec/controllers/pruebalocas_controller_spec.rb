@@ -23,8 +23,12 @@ describe PruebalocasController do
   # This should return the minimal set of attributes required to create a valid
   # Pruebaloca. As you add validations to Pruebaloca, be sure to
   # update the return value of this method accordingly.
+
   def valid_attributes
-    {}
+    {
+      :nombre => "pepe",
+      :pelos => 3
+    }
   end
   
   # This should return the minimal set of values that should be in the session

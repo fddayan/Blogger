@@ -1,4 +1,5 @@
 class PruebalocasController < ApplicationController
+  skip_authorization_check
   # GET /pruebalocas
   # GET /pruebalocas.json
   def index
