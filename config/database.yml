@@ -20,5 +20,5 @@ test:
 
 production:
   adapter: postgresql
-  database: myapp_development
+  database: db/production.postgresql
   timeout: 5000
