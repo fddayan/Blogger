@@ -20,6 +20,17 @@ Blogger::Application.configure do
   # Generate digests for assets URLs
   config.assets.digest = true
 
+  config.action_mailer.smtp_settings = {
+    enable_starttls_auto: true,
+    address: "smtp.gmail.com",    
+    port: 587,
+    domain: "gmail.com",
+    authentication: "plain",    
+    user_name: ENV["maria.alvarez@globant.com"],
+    password: ENV["abc!1234"]
+  }
+
+
   # Defaults to Rails.root.join("public/assets")
   # config.assets.manifest = YOUR_PATH
 
