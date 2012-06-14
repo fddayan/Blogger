@@ -22,21 +22,21 @@ Blogger::Application.configure do
 
 
   # ActionMailer Config
-  config.action_mailer.default_url_options = { :host => 'cold-beach-7073.herokuapp.com' }
+  config.action_mailer.default_url_options = {:host=>'cold-beach-7073.herokuapp.com'}
   config.action_mailer.delivery_method = :smtp
   # change to false to prevent email from being sent during development
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.default :charset => "utf-8"  
+  config.action_mailer.default :charset => "utf-8"
 
   config.action_mailer.smtp_settings = {
     enable_starttls_auto: true,
     address: "smtp.gmail.com",    
-    port: 465,
-    domain: "globant.com",
+    port: 587,
+    domain: "gmail.com",
     authentication: "plain",    
-    user_name: ENV["maria.alvarez@globant.com"],
-    password: ENV["abc!1234"]
+    user_name: "adrianrekofsky@gmail.com",
+    password: "12078431094109"
   }
 
 
