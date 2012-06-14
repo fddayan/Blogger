@@ -32,8 +32,8 @@ Blogger::Application.configure do
   config.action_mailer.smtp_settings = {
     enable_starttls_auto: true,
     address: "smtp.gmail.com",    
-    port: 587,
-    domain: "gmail.com",
+    port: 465,
+    domain: "globant.com",
     authentication: "plain",    
     user_name: ENV["maria.alvarez@globant.com"],
     password: ENV["abc!1234"]
