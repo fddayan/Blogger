@@ -14,7 +14,7 @@ describe PostsController do
     end
 
     it "update a post" do
-      post :create,:id=>@post.id, :post=>@post.attributes
+      post :update,:id=>@post.id, :post=>@post.attributes
     end
   
     it "delete a post" do
