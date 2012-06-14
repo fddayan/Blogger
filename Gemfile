@@ -41,7 +41,11 @@ group :test, :development do
   gem "rspec-rails", "~> 2.0"
   gem 'sqlite3'
 end
-gem 'pg', :group => [:production]
+group :production do
+  # gems specifically for Heroku go here
+  gem "pg"
+end
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
