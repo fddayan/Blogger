@@ -2,8 +2,6 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.3'
 
-gem 'sqlite3'
-
 gem 'jquery-rails'
 
 gem 'devise'
@@ -41,6 +39,11 @@ gem 'acts-as-taggable-on', '~> 2.3.1'
 
 group :test, :development do
   gem "rspec-rails", "~> 2.0"
+  gem 'sqlite3'
+end
+group :production do
+  # gems specifically for Heroku go here
+  gem "pg"
 end
 
 # Bundle edge Rails instead:

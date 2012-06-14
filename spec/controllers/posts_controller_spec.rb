@@ -10,7 +10,9 @@ describe PostsController do
     end
   
     it "creates a new post" do
-      post :create,:post=>@post.attributes
+      lambda {
+        post :create, :post=>@post.attributes
+      }.should change(Post,:count)
     end
 
     it "update a post" do

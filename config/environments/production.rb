@@ -20,6 +20,26 @@ Blogger::Application.configure do
   # Generate digests for assets URLs
   config.assets.digest = true
 
+
+  # ActionMailer Config
+  config.action_mailer.default_url_options = {:host=>'cold-beach-7073.herokuapp.com'}
+  config.action_mailer.delivery_method = :smtp
+  # change to false to prevent email from being sent during development
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default :charset => "utf-8"
+
+  config.action_mailer.smtp_settings = {
+    enable_starttls_auto: true,
+    address: "smtp.gmail.com",    
+    port: 587,
+    domain: "gmail.com",
+    authentication: "plain",    
+    user_name: "juancitoperezgarcia@gmail.com",
+    password: "12078431094109"
+  }
+
+
   # Defaults to Rails.root.join("public/assets")
   # config.assets.manifest = YOUR_PATH
 
